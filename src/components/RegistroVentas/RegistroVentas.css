@@ -1,0 +1,597 @@
+/* RegistroVentas.css - Estilo premium concesionario 2025 */
+
+.ventas-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+  padding: 8rem 2rem 4rem; /* Más espacio arriba para navbar */
+  font-family: 'Quicksand', sans-serif;
+}
+
+.ventas-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-icon {
+  color: #0074d9;
+}
+
+.header-title h1 {
+  font-size: 2.8rem;
+  color: #001f3f;
+  margin: 0;
+}
+
+.header-subtitle {
+  color: #666;
+  font-size: 1.2rem;
+  margin-top: 0.3rem;
+}
+
+.ventas-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.search-container2,
+.filtro-fecha,
+.rango-fechas {
+  position: relative;
+  min-width: 280px;
+}
+
+.search-container2 input,
+.filtro-fecha select,
+.rango-fechas input {
+  width: 100%;
+  padding: 14px 14px 14px 48px;
+  border: 2px solid rgba(0,116,217,0.2);
+  border-radius: 16px;
+  font-size: 1.05rem;
+  transition: all 0.3s;
+}
+
+.search-container2 input:focus,
+.filtro-fecha select:focus,
+.rango-fechas input:focus {
+  border-color: #0074d9;
+  box-shadow: 0 0 0 5px rgba(0,116,217,0.15);
+}
+
+.search-container2 svg,
+.filtro-fecha svg {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #95a5a6;
+}
+
+.rango-fechas {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.rango-fechas input {
+  padding-left: 14px;
+}
+
+.btn-nueva-venta {
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #001f3f, #0074d9);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.btn-nueva-venta:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,116,217,0.4);
+}
+
+.ventas-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 20px;
+  padding: 1.8rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-value {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #0074d9;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.stat-label {
+  color: #666;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Tabla y cards */
+.ventas-table {
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+  margin-bottom: 3rem;
+}
+
+.ventas-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ventas-table th,
+.ventas-table td {
+  padding: 1.4rem 1.8rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.ventas-table th {
+  background: #001f3f;
+  color: white;
+  font-weight: 600;
+}
+
+.precio-venta {
+  font-weight: 700;
+  color: #0074d9;
+  font-size: 1.2rem;
+}
+
+.acciones-col {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.btn-edit,
+.btn-delete {
+  padding: 10px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-edit {
+  background: rgba(0,116,217,0.1);
+  color: #0074d9;
+}
+
+.btn-edit:hover {
+  background: #0074d9;
+  color: white;
+}
+
+.btn-delete {
+  background: rgba(255,65,54,0.1);
+  color: #ff4136;
+}
+
+.btn-delete:hover {
+  background: #ff4136;
+  color: white;
+}
+
+/* Cards mobile */
+.ventas-cards {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .ventas-table {
+    display: none;
+  }
+  .ventas-cards {
+    display: block;
+  }
+}
+
+.venta-card {
+  background: white;
+  border-radius: 20px;
+  padding: 1.8rem;
+  margin-bottom: 1.8rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.venta-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.venta-fecha {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.venta-precio {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0074d9;
+}
+
+.venta-vehiculo {
+  font-size: 1.4rem;
+  color: #001f3f;
+  margin-bottom: 1rem;
+}
+
+.venta-cliente,
+.venta-notas {
+  color: #444;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0.6rem 0;
+}
+
+.venta-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.venta-actions button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.venta-actions .edit {
+  background: rgba(0,116,217,0.1);
+  color: #0074d9;
+}
+
+.venta-actions .delete {
+  background: rgba(255,65,54,0.1);
+  color: #ff4136;
+}
+
+/* Loading y empty */
+.loading-container,
+.empty-state {
+  text-align: center;
+  padding: 8rem 2rem;
+  color: #95a5a6;
+}
+
+.spin {
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Modal */
+.venta-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 31, 63, 0.75);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1.5rem;
+}
+
+.venta-modal {
+  background: white;
+  border-radius: 24px;
+  max-height: 90%;
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem;
+  box-shadow: 0 20px 70px rgba(0,0,0,0.3);
+  margin-top: 50px;
+
+}
+
+.venta-modal form {
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.venta-modal form::-webkit-scrollbar {
+  width: 6px;
+}
+
+.venta-modal form::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+}
+
+.venta-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.venta-modal-header h2 {
+  font-size: 2rem;
+  color: #001f3f;
+  margin: 0;
+}
+
+.form-group {
+  margin-bottom: 1.8rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  color: #001f3f;
+  font-size: 1.05rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #d9e2ec;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #0074d9;
+  box-shadow: 0 0 0 5px rgba(0,116,217,0.15);
+}
+
+.precio-input {
+  position: relative;
+}
+
+.precio-input input {
+  padding-left: 45px;
+}
+
+.precio-input svg {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+}
+
+.form-error {
+  color: #ff4136;
+  font-size: 0.95rem;
+  margin-top: 0.6rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  margin-top: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.modal-actions button {
+  padding: 14px 32px;
+  border-radius: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.modal-actions button:first-child {
+  background: #f0f4f8;
+  color: #666;
+}
+
+.modal-actions button:last-child {
+  background: #0074d9;
+  color: white;
+}
+
+.modal-actions button:last-child:hover {
+  background: #005bb5;
+  transform: translateY(-3px);
+}
+
+.confirm-modal {
+  max-width: 480px;
+  text-align: center;
+}
+
+.confirm-content {
+  margin: 1.5rem 0;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.warning-text {
+  color: #ff4136;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.btn-delete-confirm {
+  background: #ff4136 !important;
+  color: white !important;
+}
+
+.btn-delete-confirm:hover {
+  background: #e74c3c !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 10px 25px rgba(255, 65, 54, 0.4) !important;
+}
+
+.toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  color: white;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  min-width: 280px;
+}
+
+.toast-success {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+.toast-error {
+  background: linear-gradient(135deg, #ff6961, #e74c3c);
+}
+
+.toast-icon { display: flex; align-items: center; }
+.toast-text { font-weight: 600; }
+.toast-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+
+
+
+.ventas-table .notas-col {
+  max-width: 280px;
+  min-width: 180px;
+  max-height: 120px;           /* ← Altura máxima */
+  overflow-y: auto;            /* ← Scroll vertical */
+  word-break: break-word;
+  line-height: 1.5;
+  padding-right: 8px;
+}
+
+/* Scroll bonito en tabla también */
+.ventas-table .notas-col::-webkit-scrollbar {
+  width: 6px;
+}
+.ventas-table .notas-col::-webkit-scrollbar-track {
+  background: transparent;
+}
+.ventas-table .notas-col::-webkit-scrollbar-thumb {
+  background: rgba(0, 116, 217, 0.3);
+  border-radius: 3px;
+}
+.ventas-table .notas-col::-webkit-scrollbar-thumb:hover {
+  background: #0074d9;
+}
+/* =================== RESPONSIVE MOBILE - NOTAS =================== */
+
+@media (max-width: 1024px) {
+  .ventas-cards {
+    display: block !important;
+  }
+
+  .venta-card {
+    max-width: 100%;
+    overflow-x: hidden; /* Evita scroll horizontal */
+    box-sizing: border-box;
+  }
+
+  .venta-notas {
+    /* Máximo control para notas largas en mobile */
+    max-width: 100%;
+    word-break: break-all;        /* Fuerza quiebre incluso en cadenas sin espacios */
+    overflow-wrap: break-word;
+    hyphens: auto;                /* Guiones automáticos en español */
+    white-space: pre-wrap;        /* Respeta saltos pero permite wrap */
+    overflow-x: hidden;           /* No permite desborde horizontal */
+    padding-right: 8px;           /* Espacio para scrollbar si aplica */
+    margin: 0.8rem 0;
+    font-size: 0.95rem;           /* Un poco más pequeño para que quepa mejor */
+    line-height: 1.45;
+  }
+
+  /* Scroll vertical si las notas son muy largas */
+  .venta-notas {
+    max-height: 140px;            /* Ajusta según prefieras */
+    overflow-y: auto;
+  }
+
+  .venta-notas::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .venta-notas::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.05);
+  }
+
+  .venta-notas::-webkit-scrollbar-thumb {
+    background: #0074d9;
+    border-radius: 5px;
+  }
+
+  /* Evita que cualquier elemento hijo desborde */
+  .venta-card * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* Ajuste extra para tablets/pequeñas pantallas */
+@media (max-width: 768px) {
+  .venta-notas {
+    max-height: 120px;
+    font-size: 0.92rem;
+  }
+}

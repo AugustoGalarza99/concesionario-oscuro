@@ -1,0 +1,187 @@
+.c-contacto-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+  font-family: 'Quicksand', sans-serif;
+  padding-top: 2rem;
+}
+
+/* Hero */
+.c-contacto-hero {
+  background: linear-gradient(rgba(0, 31, 63, 0.85), rgba(0, 116, 217, 0.75)),
+    url('https://images.unsplash.com/photo-1502877338535-766e3a6052c0?w=1600') center/cover;
+  color: white;
+  text-align: center;
+  padding: 10rem 2rem 8rem;
+  margin: -2rem -1rem 4rem;
+}
+
+.c-hero-content h1 {
+  font-size: 3.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.c-hero-content p {
+  font-size: 1.6rem;
+  opacity: 0.9;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+}
+
+/* Información principal - tarjetas */
+.c-contacto-info {
+  padding: 0 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.c-contacto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.c-contacto-card {
+  background: white;
+  border-radius: 28px;
+  padding: 3rem 2rem;
+  text-align: center;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+  transition: all 0.4s;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+.c-contacto-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 30px 70px rgba(0,116,217,0.2);
+}
+
+.c-card-icon {
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, #001f3f, #0074d9);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 1.8rem;
+  color: white;
+}
+
+.c-contacto-card h3 {
+  font-size: 1.6rem;
+  color: #001f3f;
+  margin-bottom: 1rem;
+}
+
+.c-contacto-value {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #0074d9;
+  margin-bottom: 0.5rem;
+}
+
+.c-contacto-action {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* WhatsApp destacado */
+.c-whatsapp {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: white;
+}
+
+.c-whatsapp .c-card-icon {
+  background: white;
+  color: #25D366;
+}
+
+.c-whatsapp .c-contacto-value {
+  color: white;
+}
+
+.c-whatsapp:hover {
+  transform: scale(1.05);
+}
+
+/* Mapa */
+.c-contacto-mapa {
+  padding: 5rem 2rem;
+  background: white;
+  text-align: center;
+}
+
+.c-contacto-mapa h2 {
+  font-size: 2.8rem;
+  color: #001f3f;
+  margin-bottom: 2rem;
+}
+
+.c-mapa-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+/* Redes */
+.c-contacto-redes {
+  padding: 5rem 2rem;
+  background: #001f3f;
+  color: white;
+  text-align: center;
+}
+
+.c-contacto-redes h2 {
+  font-size: 2.8rem;
+  margin-bottom: 3rem;
+}
+
+.c-redes-grid {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.c-redes-card {
+  background: rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 2.5rem 3rem;
+  text-align: center;
+  transition: all 0.4s;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.c-redes-card:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-8px);
+}
+
+.c-redes-card span {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .c-contacto-hero {
+    padding: 8rem 1.5rem 6rem;
+  }
+  .c-contacto-grid {
+    grid-template-columns: 1fr;
+  }
+  .c-redes-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}

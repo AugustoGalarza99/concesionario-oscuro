@@ -1,0 +1,380 @@
+.clientes-admin-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+  padding: 8rem 2rem 6rem;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.admin-title {
+  font-size: 2.8rem;
+  color: #001f3f;
+  text-align: center;
+  margin-bottom: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Formulario centrado */
+.cliente-form-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5rem;
+}
+
+.cliente-form-container {
+  background: white;
+  border-radius: 28px;
+  padding: 3rem;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 700px;
+}
+
+.cliente-form-container h2 {
+  color: #001f3f;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.cliente-form {
+  display: grid;
+  gap: 2rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  color: #001f3f;
+  font-size: 1.1rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 16px;
+  border: 2px solid #d9e2ec;
+  border-radius: 14px;
+  font-size: 1.05rem;
+  transition: all 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #0074d9;
+  box-shadow: 0 0 0 6px rgba(0,116,217,0.15);
+}
+
+.current-photo {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.current-photo img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #0074d9;
+}
+
+.btn-submit,
+.btn-cancel-edit {
+  padding: 16px;
+  border: none;
+  border-radius: 16px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, #001f3f, #0074d9);
+  color: white;
+}
+
+.btn-submit:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0,116,217,0.4);
+}
+
+.btn-cancel-edit {
+  background: #f0f4f8;
+  color: #666;
+  margin-top: 1rem;
+}
+
+.btn-cancel-edit:hover {
+  background: #e0e7ff;
+}
+
+/* Lista */
+.clientes-list {
+  background: white;
+  border-radius: 28px;
+  padding: 3rem;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+}
+
+.clientes-list h2 {
+  color: #001f3f;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.clientes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2.5rem;
+}
+
+.cliente-card {
+  background: #f8f9ff;
+  border-radius: 24px;
+  padding: 2.5rem;
+  text-align: center;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+  transition: all 0.4s;
+}
+
+.cliente-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 60px rgba(0,116,217,0.2);
+}
+
+.cliente-photo {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid #0074d9;
+}
+
+.cliente-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cliente-card h3 {
+  font-size: 1.6rem;
+  color: #001f3f;
+  margin-bottom: 1rem;
+}
+
+.cliente-stars {
+  color: #ffd700;
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.cliente-comentario {
+  color: #555;
+  line-height: 1.7;
+  font-size: 1.1rem;
+  margin-bottom: 1.8rem;
+}
+
+.cliente-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn-edit,
+.btn-delete {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-edit {
+  background: rgba(0,116,217,0.1);
+  color: #0074d9;
+}
+
+.btn-edit:hover {
+  background: #0074d9;
+  color: white;
+}
+
+.btn-delete {
+  background: rgba(255,65,54,0.1);
+  color: #ff4136;
+}
+
+.btn-delete:hover {
+  background: #ff4136;
+  color: white;
+}
+
+/* Loading y mensajes */
+.loading,
+.no-data {
+  text-align: center;
+  padding: 5rem;
+  color: #666;
+  font-size: 1.4rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .clientes-admin-page {
+    padding: 5.5rem 1rem 4rem;
+  }
+
+  .admin-title {
+    font-size: 2rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .cliente-form-container {
+    padding: 1.8rem 1.5rem;
+    border-radius: 20px;
+  }
+
+  .cliente-form-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    font-size: 0.95rem;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    padding: 14px;
+    font-size: 1rem;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .clientes-list {
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+  }
+
+  .clientes-list h2 {
+    font-size: 1.4rem;
+  }
+
+  .clientes-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .cliente-card {
+    padding: 1.8rem 1.5rem;
+    border-radius: 20px;
+  }
+
+  .cliente-photo {
+    width: 96px;
+    height: 96px;
+    border-width: 4px;
+  }
+
+  .cliente-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .cliente-stars {
+    font-size: 1.4rem;
+  }
+
+  .cliente-comentario {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 768px) {
+  .cliente-actions {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .btn-edit,
+  .btn-delete {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .loading,
+  .no-data {
+    padding: 3rem 1rem;
+    font-size: 1.1rem;
+  }
+}
+
+
+/* TOAST */
+.toast-confirm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.toast-confirm strong {
+  font-size: 1.1rem;
+  color: #001f3f;
+}
+
+.toast-confirm p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.toast-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+}
+
+.toast-btn {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.toast-btn.cancel {
+  background: #f0f4f8;
+  color: #333;
+}
+
+.toast-btn.cancel:hover {
+  background: #e2e8f0;
+}
+
+.toast-btn.delete {
+  background: linear-gradient(135deg, #ff4136, #ff6b6b);
+  color: white;
+}
+
+.toast-btn.delete:hover {
+  transform: translateY(-2px);
+}

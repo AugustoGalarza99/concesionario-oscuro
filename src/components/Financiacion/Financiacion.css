@@ -1,0 +1,158 @@
+/* Financiacion.css - Estilo moderno y premium para concesionario */
+
+.financiacion-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+  font-family: 'Quicksand', sans-serif;
+  padding-top: 2rem;
+}
+
+/* Hero */
+.financiacion-hero {
+  background: linear-gradient(rgba(0, 31, 63, 0.85), rgba(0, 116, 217, 0.75)),
+    url('https://images.unsplash.com/photo-1502877338535-766e3a6052c0?w=1600') center/cover;
+  color: white;
+  text-align: center;
+  padding: 10rem 2rem 8rem;
+  margin: -2rem -1rem 6rem;
+}
+
+.financiacion-hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.financiacion-title {
+  font-size: 3.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.financiacion-icon {
+  color: #ff4136;
+}
+
+.financiacion-subtitle {
+  font-size: 1.6rem;
+  opacity: 0.95;
+}
+
+/* Contenido principal - Tarjetas */
+.financiacion-content {
+  padding: 0 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.financiacion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2.5rem;
+}
+
+.financiacion-card {
+  background: white;
+  border-radius: 28px;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+  transition: all 0.4s;
+}
+
+.financiacion-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 30px 70px rgba(0,116,217,0.2);
+}
+
+.financiacion-card-icon {
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, #001f3f, #0074d9);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 1.8rem;
+  color: white;
+}
+
+.financiacion-card.destacada .financiacion-card-icon {
+  background: linear-gradient(135deg, #ff4136, #e31c0f);
+}
+
+.financiacion-card-title {
+  font-size: 1.8rem;
+  color: #001f3f;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+}
+
+.financiacion-card-text {
+  font-size: 1.15rem;
+  color: #444;
+  line-height: 1.7;
+}
+
+.financiacion-card-text strong {
+  color: #0074d9;
+}
+
+/* CTA final */
+.financiacion-cta {
+  background: #001f3f;
+  color: white;
+  text-align: center;
+  padding: 8rem 2rem;
+  margin-top: 6rem;
+}
+
+.financiacion-cta-title {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.financiacion-cta-text {
+  font-size: 1.5rem;
+  opacity: 0.9;
+  margin-bottom: 3rem;
+}
+
+.financiacion-cta-btn {
+  display: inline-block;
+  padding: 20px 45px;
+  background: #ff4136;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 600;
+  border-radius: 60px;
+  text-decoration: none;
+  box-shadow: 0 20px 50px rgba(255,65,54,0.4);
+  transition: all 0.5s;
+}
+
+.financiacion-cta-btn:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 30px 70px rgba(255,65,54,0.6);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .financiacion-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .financiacion-hero {
+    padding: 8rem 1.5rem 6rem;
+  }
+  .financiacion-title {
+    font-size: 3rem;
+  }
+  .financiacion-subtitle {
+    font-size: 1.4rem;
+  }
+}

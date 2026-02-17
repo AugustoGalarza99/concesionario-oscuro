@@ -1,0 +1,447 @@
+/* Vehiculos.css - ADAPTADO PARA CONCESIONARIO DE AUTOS: MODERNO, MINIMALISTA, TENDENCIA 2025 */
+
+.veh-page {
+  min-height: 100vh;
+  background: #0b0f14;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.veh-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.veh-title {
+  font-size: 3.8rem;
+  font-weight: 700;
+  color: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.veh-subtitle {
+  font-size: 1.6rem;
+  color: #e5e7eb;
+  margin-top: 0.8rem;
+  font-weight: 300;
+}
+
+.veh-container {
+  max-width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: 30px;
+}
+
+.veh-filters-horizontal {
+  background: #111827;
+  backdrop-filter: blur(20px);
+  border-radius: 36px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.09);
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr auto;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.veh-filter-search {
+  position: relative;
+}
+
+.veh-filter-search input {
+  width: 100%;
+  padding: 18px 22px 18px 52px;
+  border-radius: 24px;
+  border: 2px solid rgba(0,116,217,0.15);
+  font-size: 1.15rem;
+  transition: all 0.4s;
+}
+
+.veh-filter-search input:focus {
+  outline: none;
+  border-color: linear-gradient(135deg, #001f3f, #0074d9);
+  box-shadow: 0 0 0 6px rgba(0,116,217,0.1);
+}
+
+.veh-filter-search svg {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #555;
+}
+
+.veh-filter-select {
+  padding: 18px 22px;
+  border-radius: 24px;
+  border: 2px solid rgba(0,116,217,0.15);
+  font-size: 1.1rem;
+  background: white;;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.veh-filter-select:focus {
+  outline: none;
+  border-color: linear-gradient(135deg, #001f3f, #0074d9);
+  box-shadow: 0 0 0 6px rgba(0,116,217,0.1);
+}
+
+.veh-filter-btn {
+  padding: 18px 36px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #001f3f, #0074d9);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  white-space: nowrap;
+}
+
+.veh-filter-btn:hover {
+  background: linear-gradient(135deg, #0074d9, #001f3f);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 116, 217, 0.3);
+}
+
+/* MAIN */
+.veh-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+
+.veh-filters-bar {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.veh-search-container {
+  position: relative;
+  flex: 1;
+  min-width: 350px;
+}
+
+.veh-search-container input {
+  width: 100%;
+  padding: 18px 55px 18px 60px;
+  border: 2px solid rgba(0,116,217,0.15);
+  border-radius: 24px;
+  font-size: 1.2rem;
+  transition: all 0.4s;
+}
+
+.veh-search-container input:focus {
+  outline: none;
+  border-color: #0074d9;
+  box-shadow: 0 0 0 6px rgba(0,116,217,0.1);
+}
+
+.veh-search-icon { position: absolute; left: 22px; top: 50%; transform: translateY(-50%); color: #95a5a6; }
+.veh-clear-search { position: absolute; right: 22px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #95a5a6; transition: color 0.3s; }
+.veh-clear-search:hover { color: #e74c3c; }
+
+.veh-sort-select {
+  padding: 18px 28px;
+  border: 2px solid rgba(0,116,217,0.15);
+  border-radius: 24px;
+  background: white;
+  font-weight: 500;
+  cursor: pointer;
+  min-width: 250px;
+  transition: border-color 0.3s;
+}
+
+.veh-sort-select:focus {
+  border-color: #0074d9;
+}
+
+.veh-results-info {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+/* GRID */
+.veh-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.veh-card {
+  display: flex;
+  flex-direction: column;
+  background: #111827;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+}
+
+.veh-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+}
+
+.veh-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.veh-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;   /* o 1 / 1 si la querés más cuadrada */
+  overflow: hidden;
+}
+
+.veh-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 20px;
+}
+
+.veh-card:hover img { transform: scale(1.15); }
+
+.veh-discount-badge,
+.veh-featured-badge {
+  position: absolute;
+  top: 20px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  z-index: 5;
+}
+
+.veh-discount-badge { right: 20px; background: #ff4136; color: white; }
+.veh-featured-badge { left: 20px; background: linear-gradient(135deg, #ffd700, #ffa500); color: #001f3f; }
+
+.veh-outstock-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 600;
+  display: grid;
+  place-items: center;
+  z-index: 6;
+}
+
+.veh-info {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;                 /* 🔥 clave */
+}
+
+.veh-info-top {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.veh-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #e5e7eb; 
+  margin: 0 0 1.2rem;
+  line-height: 1.5;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.veh-price-container { margin: 1.2rem 0; }
+
+.veh-original-price {
+  font-size: 1.5rem;
+  color: #e5e7eb; ;
+  text-decoration: line-through;
+  display: block;
+}
+
+.veh-final-price {
+  margin-top: auto;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0074d9;
+}
+
+.veh-final-price.solo { color: #001f3f; }
+
+.veh-stock-info { font-size: 1.05rem; font-weight: 500; }
+.veh-in-stock { color: #2ecc71; }
+.veh-no-stock { color: #e74c3c; }
+
+/* DETALLES */
+.veh-detail {
+  font-size: 0.9rem;
+  color: rgb(165, 165, 165);
+  margin: 0;
+}
+
+.veh-detail strong {
+  color: white;
+  font-weight: 600;
+}
+
+.veh-add-btn {
+  display: block;               /* ¡Esto es clave! Fuerza que ocupe todo el ancho */
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #001f3f, #0074d9);
+  color: white;
+  border: none;
+  border-radius: 12px;          /* Opcional: redondeado para que quede más lindo */
+  font-weight: 600;
+  font-size: 1.1rem;            /* Mejor legibilidad */
+  text-align: center;           /* Centra el texto */
+  text-decoration: none;        /* Elimina subrayado de Link */
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-sizing: border-box;       /* Incluye padding en el ancho */
+}
+
+.veh-add-btn:hover:not(.veh-disabled) {
+  background: linear-gradient(135deg, #0074d9, #001f3f);
+  transform: translateY(-3px);  /* Efecto más premium que scale */
+  box-shadow: 0 12px 30px rgba(0, 116, 217, 0.3);
+}
+
+.veh-add-btn.veh-disabled {
+  background: #bdc3c7;
+  color: #666;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Asegura que el contenedor padre permita el 100% */
+.veh-card {                     /* O el nombre de tu contenedor de card */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Si el botón está dentro de otro div con flex, fuerza el estiramiento */
+.veh-card .veh-add-btn {
+  margin-top: auto;             /* Lo pega abajo si hay flex column */
+}
+
+/* PAGINACIÓN */
+.veh-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin: 5rem 0;
+}
+
+.veh-page-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(0,116,217,0.08);
+  border: none;
+  color: #0074d9;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.veh-page-btn:hover:not(:disabled) {
+  background: #0074d9;
+  color: white;
+  transform: scale(1.1);
+}
+
+.veh-page-btn.veh-active {
+  background: #0074d9;
+  color: white;
+}
+
+/* SKELETON */
+.veh-skeleton { animation: pulse 1.8s infinite; }
+.veh-skeleton-img { height: 380px; background: #e0e0e0; }
+.veh-skeleton-line { height: 28px; background: #e0e0e0; border-radius: 14px; margin: 14px; }
+.veh-skeleton-line.short { width: 70%; }
+
+.veh-no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 6rem;
+  color: #95a5a6;
+}
+
+/* ANIMACIONES */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .veh-container { grid-template-columns: 1fr; }
+  .veh-sidebar { order: 2; position: static; }
+  .veh-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+}
+
+@media (max-width: 768px) {
+  .veh-title { font-size: 1.5rem; }
+  .veh-subtitle { font-size: 1.4rem; }
+  .veh-filters-bar { flex-direction: column; }
+  .veh-search-container { min-width: 100%; }
+  .veh-sidebar { padding: 2rem; border-radius: 28px; }
+}
+
+@media (max-width: 480px) {
+  .veh-grid { grid-template-columns: 1fr; }
+  .veh-pagination { gap: 10px; }
+  .veh-page-btn { width: 44px; height: 44px; }
+}
+
+@media (max-width: 1024px) {
+  .veh-filters-horizontal {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .veh-filter-btn {
+    grid-column: 1 / -1;
+    justify-self: stretch;
+  }
+}
+
+@media (max-width: 600px) {
+  .veh-filters-horizontal {
+    grid-template-columns: 1fr;
+    padding: 1.8rem;
+  }
+}

@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* Claro */
+:root {
+  --color-background-general: #d9e2ec;
+  --color-background-tarjeta: white;
+  --color-texto-oscuro: #001f3f;
+  --color-texto-claro: white;
+  --color-precio: #0074d9;
+  --color-parrafos: #555;
+  --color-boton-fondo: linear-gradient(135deg, #001f3f, #0074d9);
+  --color-boton-texto: white;
+}
+
+/* Oscuro */
+/*:root {
+  --color-background-general: #141516;
+  --color-background-tarjeta: rgb(83, 83, 83);
+  --color-texto-oscuro: #dadada;
+  --color-texto-claro: rgb(255, 255, 255);
+  --color-precio: #0074d9;
+  --color-parrafos: #d8d7d7;
+  --color-boton-fondo: linear-gradient(135deg, #001f3f, #0074d9);
+  --color-boton-texto: rgb(255, 255, 255);
+}*/
+
+:root {
+  /* ===== Base ===== */
+  --bg-main: #0b0f14;          /* fondo app */
+  --bg-secondary: #0f1621;     /* fondo secundario */
+  --bg-card: #111827;          /* cards, panels */
+  --bg-input: #0f172a;         /* inputs */
+  --bg-hover: #1f2933;         /* hover filas / botones */
+
+  /* ===== Textos ===== */
+  --text-primary: #e5e7eb;     /* texto principal */
+  --text-secondary: #9ca3af;   /* texto secundario */
+  --text-muted: #6b7280;       /* placeholders, hints */
+  --text-inverted: #020617;    /* texto sobre botones claros */
+
+  /* ===== Bordes ===== */
+  --border-default: #1f2937;
+  --border-soft: #273244;
+  --border-strong: #374151;
+
+  /* ===== Acento (marca) ===== */
+  --primary: #3b82f6;          /* azul principal */
+  --primary-hover: #2563eb;
+  --primary-soft: #1e3a8a;
+
+  /* ===== Estados ===== */
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #38bdf8;
+
+  /* ===== Sombras ===== */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.5);
+
+  /* ===== Scrollbar ===== */
+  --scrollbar-bg: #020617;
+  --scrollbar-thumb: #1f2937;
+
+  /* ===== Overlay / modals ===== */
+  --overlay-bg: rgba(2, 6, 23, 0.75);
+}

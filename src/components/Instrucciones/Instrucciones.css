@@ -1,0 +1,84 @@
+.instructions-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+  font-family: "Quicksand", sans-serif;
+  padding: 4rem 1.5rem;
+}
+
+.instructions-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.instructions-title {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #001f3f;
+}
+
+.instructions-intro {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+  color: #444;
+}
+
+.instructions-section {
+  margin-bottom: 2.5rem;
+  padding: 2rem;
+  border-radius: 16px;
+  background: #f8fafc;
+  border-left: 6px solid #0074d9;
+}
+
+.instructions-section h2 {
+  margin-bottom: 1rem;
+  color: #003366;
+}
+
+.instructions-section p {
+  margin-bottom: 0.8rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.instructions-section ul,
+.instructions-section ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.instructions-section li {
+  margin-bottom: 0.5rem;
+}
+
+.instructions-footer {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #ddd;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #003366;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .instructions-container {
+    padding: 2rem 1.5rem;
+  }
+
+  .instructions-title {
+    font-size: 2.2rem;
+  }
+
+  .instructions-section {
+    padding: 1.5rem;
+  }
+}

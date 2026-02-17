@@ -1,0 +1,125 @@
+/* Loader.css - Loader premium 2025 para concesionario */
+
+.loader-container {
+  position: fixed;
+  inset: 0;
+  background: rgba(240, 244, 248, 0.92);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Tamaños */
+.loader-small {
+  transform: scale(0.7);
+}
+
+.loader-medium {
+  transform: scale(1);
+}
+
+.loader-large {
+  transform: scale(1.4);
+}
+
+/* Loader principal */
+.loader {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 8px solid transparent;
+  border-radius: 50%;
+  animation: ringSpin 2.4s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.loader-ring:nth-child(1) {
+  border-top-color: #0074d9;
+  border-right-color: #0074d9;
+  animation-delay: 0s;
+}
+
+.loader-ring:nth-child(2) {
+  border-top-color: #001f3f;
+  border-left-color: #001f3f;
+  animation-delay: -0.4s;
+}
+
+.loader-ring:nth-child(3) {
+  border-bottom-color: #ff4136;
+  border-left-color: #ff4136;
+  animation-delay: -0.8s;
+}
+
+.loader-core {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #0074d9, #001f3f);
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(0, 116, 217, 0.5);
+  animation: pulseCore 1.8s ease-in-out infinite;
+}
+
+/* Texto */
+.loader-text {
+  position: absolute;
+  bottom: -60px;
+  color: #001f3f;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.9;
+  animation: fadePulse 2s ease-in-out infinite;
+}
+
+/* Animaciones */
+@keyframes ringSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseCore {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 30px rgba(0, 116, 217, 0.5);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 50px rgba(0, 116, 217, 0.7);
+  }
+}
+
+@keyframes fadePulse {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .loader-container.loader-large {
+    transform: scale(1);
+  }
+  .loader-text {
+    font-size: 1.2rem;
+    bottom: -50px;
+  }
+}

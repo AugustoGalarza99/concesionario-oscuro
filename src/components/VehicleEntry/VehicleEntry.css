@@ -1,0 +1,418 @@
+.vehicle-entry {
+  max-width: 1280px;
+  margin: auto;
+  padding: 28px;
+}
+
+.vehicle-entry h2 {
+  font-size: 1.7rem;
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+
+/* FORM */
+.vehicle-form {
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 22px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.08);
+}
+
+.vehicle-form input {
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  font-size: .85rem;
+}
+
+.vehicle-form button {
+  grid-column: 1 / -1;
+  padding: 16px;
+  border-radius: 18px;
+  background: linear-gradient(135deg,#111827,#1f2937);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* SEARCH */
+.vehicle-toolbar {
+  margin: 28px 0;
+}
+
+.vehicle-toolbar input {
+  width: 380px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid #e5e7eb;
+}
+
+/* TABLE */
+.vehicle-table-wrapper {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.06);
+  overflow: hidden;
+}
+
+/* contenedor scrolleable */
+.vehicle-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* barra de scroll sutil */
+.vehicle-table-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.vehicle-table-scroll::-webkit-scrollbar-track {
+  background: #f3f4f6;
+  border-radius: 10px;
+}
+
+.vehicle-table-scroll::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 10px;
+}
+
+/* tabla nunca se aplasta */
+.vehicle-table {
+  width: 100%;
+  min-width: 900px; /* 🔑 CLAVE */
+  border-collapse: collapse;
+}
+
+.vehicle-table th {
+  padding: 16px;
+  font-size: .7rem;
+  text-transform: uppercase;
+  color: #6b7280;
+  background: #f9fafb;
+  text-align: left;
+}
+
+.vehicle-table td {
+  padding: 16px;
+  border-top: 1px solid #eef2f7;
+  font-size: .85rem;
+}
+
+.plate {
+  font-weight: 800;
+}
+
+/* BADGES */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: .7rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.badge.published {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.badge.unpublished {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* ACTIONS */
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.btn {
+  padding: 7px 12px;
+  border-radius: 10px;
+  font-size: .75rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.btn.edit {
+  background: #e5e7eb;
+}
+
+.btn.expenses {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.btn.danger {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+/* EXPENSES */
+.expense-box {
+  margin-top: 32px;
+  padding: 28px;
+  border-radius: 24px;
+  background: white;
+  box-shadow: 0 20px 40px rgba(0,0,0,.08);
+}
+
+.expense-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px dashed #e5e7eb;
+}
+
+/* =====================
+   FORM ACTIONS
+===================== */
+
+.form-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.form-actions .primary {
+  flex: 1;
+  padding: 16px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #111827, #1f2937);
+  color: white;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+.form-actions .secondary {
+  padding: 16px 20px;
+  border-radius: 18px;
+  background: #f3f4f6;
+  color: #374151;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+/* =====================
+   EXPENSE PANEL
+===================== */
+
+.expense-box {
+  margin-top: 32px;
+  background: white;
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.08);
+  max-width: 520px;
+}
+
+/* =====================
+   EXPENSE HEADER
+===================== */
+
+.expense-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.expense-header h3 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.expense-vehicle-info {
+  font-weight: 600;
+  font-size: .85rem;
+  color: #6b7280;
+  margin-left: 6px;
+}
+
+
+.close-expenses {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: #f3f4f6;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+/* LISTADO DE GASTOS */
+
+.expense-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-size: .85rem;
+  border-bottom: 1px dashed #e5e7eb;
+}
+
+.expense-row strong {
+  font-weight: 700;
+}
+
+/* INPUTS GASTOS */
+
+.expense-box input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  margin-top: 14px;
+  font-size: .85rem;
+}
+
+/* BOTÓN AGREGAR GASTO */
+
+.button-gasto{
+  margin-top: 18px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 18px;
+  border: none;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ACTIVE STATE */
+
+.btn.expenses.active {
+  background: #bfdbfe;
+  color: #1d4ed8;
+}
+
+@media (max-width: 768px) {
+  .vehicle-toolbar input {
+    width: 100%;
+  }
+
+  .vehicle-table th,
+  .vehicle-table td {
+    font-size: .8rem;
+    padding: 12px;
+  }
+
+  .btn {
+    padding: 8px 10px;
+    font-size: .7rem;
+  }
+}
+
+/* =========================
+   ALERTA VEHÍCULOS VENDIDOS
+========================= */
+.sold-alert {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #ff4d4f, #d9363e);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(217, 54, 62, 0.35);
+}
+
+.sold-alert svg {
+  flex-shrink: 0;
+}
+
+/* =========================
+   BADGES ESTADO
+========================= */
+.badge.available {
+  background: #e6fffa;
+  color: #047857;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge.sold {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* =========================
+   FILA VEHÍCULO VENDIDO
+========================= */
+.sold-row {
+  background-color: #fff5f5;
+}
+
+.sold-row td {
+  opacity: 0.85;
+}
+
+/* =========================
+   BLOQUEO DE ACCIONES
+========================= */
+.sold-locked {
+  font-size: 12px;
+  font-weight: 600;
+  color: #b91c1c;
+  background: #fee2e2;
+  padding: 6px 10px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+/* =========================
+   BOTÓN ELIMINAR VENDIDO
+========================= */
+.btn.danger {
+  background: linear-gradient(135deg, #ef4444, #b91c1c);
+  color: white;
+  border: none;
+}
+
+.btn.danger:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* =========================
+   MEJORAS GENERALES TABLA
+========================= */
+.vehicle-table td,
+.vehicle-table th {
+  vertical-align: middle;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -1,0 +1,138 @@
+.premium-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: radial-gradient(
+      circle at center,
+      #0f172a 0%,
+      #0b1220 40%,
+      #050a14 100%
+  );
+
+  color: white;
+  overflow: hidden;
+}
+
+.loader-content {
+  text-align: center;
+  max-width: 500px;
+  padding: 40px;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.logo-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.loader-logo {
+  width: 220px;
+  position: relative;
+  z-index: 2;
+  animation: float 3s ease-in-out infinite;
+}
+
+.logo-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 260px;
+  height: 260px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(0,119,255,0.4) 0%, transparent 70%);
+  filter: blur(40px);
+  z-index: 1;
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+.loader-title {
+  margin-top: 30px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.loader-subtitle {
+  margin-top: 10px;
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+.progress-bar {
+  margin-top: 30px;
+  width: 100%;
+  height: 6px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(
+      90deg,
+      #0077ff,
+      #00d4ff,
+      #0077ff
+  );
+  background-size: 200% 100%;
+  animation: progressAnim 2.5s linear forwards,
+             gradientMove 2s linear infinite;
+  border-radius: 10px;
+}
+
+/* Animaciones */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes progressAnim {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+@keyframes gradientMove {
+  from { background-position: 0% 50%; }
+  to { background-position: 200% 50%; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* Fade out suave */
+.fade-out {
+  animation: loaderExit 0.8s ease forwards;
+}
+
+@keyframes loaderExit {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    backdrop-filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.05);
+    backdrop-filter: blur(10px);
+    pointer-events: none;
+  }
+}
+.fade-out {
+  opacity: 0;
+  transform: scale(1.05);
+  pointer-events: none;
+}
