@@ -10,6 +10,7 @@ const PAGE_SIZE = 10;
 export default function Leads() {
   const [leads, setLeads] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
   const [page, setPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
   const [editingLead, setEditingLead] = useState(null);
@@ -20,8 +21,20 @@ export default function Leads() {
   // 🧠 cache en memoria
   const cacheRef = useRef({});
 
+  const invalidateCache = () => {
+    cacheRef.current = {};
+  };
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setDebouncedSearch(searchTerm);
+    }, 800);
+
+    return () => clearTimeout(timeout);
+  }, [searchTerm]);
+
   const fetchLeads = async () => {
-    const cacheKey = `${page}_${searchTerm}`;
+    const cacheKey = `${page}_${debouncedSearch}`;
 
     if (cacheRef.current[cacheKey]) {
       console.log("🧠 Cache hit", cacheKey);
@@ -57,13 +70,10 @@ export default function Leads() {
       .order("created_at", { ascending: false })
       .range(from, to);
 
-    if (searchTerm.trim()) {
+    if (debouncedSearch.trim()) {
+      const term = debouncedSearch.trim().replace(/,/g, "");
       query = query.or(
-        `
-        full_name.ilike.%${searchTerm}%,
-        vehicle_label.ilike.%${searchTerm}%,
-        notes.ilike.%${searchTerm}%
-        `
+        `full_name.ilike.%${term}%,vehicle_label.ilike.%${term}%,notes.ilike.%${term}%`
       );
     }
 
@@ -94,11 +104,11 @@ export default function Leads() {
 
   useEffect(() => {
     fetchLeads();
-  }, [page, searchTerm]);
+  }, [page, debouncedSearch]);
 
   const deleteLead = async (lead) => {
     await supabase.from("leads").delete().eq("id", lead.id);
-    cacheRef.current = {}; // invalidamos cache
+    invalidateCache();
     fetchLeads();
     setConfirm(null);
   };
@@ -277,6 +287,7 @@ export default function Leads() {
           initialData={editingLead}
           onClose={() => setEditingLead(null)}
           onSaved={() => {
+            invalidateCache();
             setEditingLead(null);
             fetchLeads();
           }}

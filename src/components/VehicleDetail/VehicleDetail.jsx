@@ -2,23 +2,18 @@ import React, { useState, useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { supabase } from "../../supabaseClient";
 import { useDealership } from "../../hooks/useDealership";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Zap,
-  Car,
-  MessageCircle,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, Zap, Car, MessageCircle,} from "lucide-react";
+import { Helmet } from "react-helmet-async";
 import "./VehicleDetail.css";
 import Footer from "../Footer/Footer";
 
 // ===============================
 // CACHE HELPERS
 // ===============================
-const cacheKey = (dealershipId, id) =>
-  `vehicle_detail_cache_${dealershipId}_${id}`;
-const versionKey = (dealershipId, id) =>
-  `vehicle_detail_version_${dealershipId}_${id}`;
+const cacheKey = (dealershipId, slug) =>
+  `vehicle_detail_cache_${dealershipId}_${slug}`;
+const versionKey = (dealershipId, slug) =>
+  `vehicle_detail_version_${dealershipId}_${slug}`;
 
 const loadCache = (dealershipId, id) => {
   const raw = localStorage.getItem(cacheKey(dealershipId, id));
@@ -39,7 +34,7 @@ const setLocalVersion = (dealershipId, id, version) =>
 // COMPONENT
 // ===============================
 function VehicleDetail() {
-  const { id } = useParams();
+  const { slug } = useParams();
   const navigate = useNavigate();
   const { dealershipId, loading: dealershipLoading } = useDealership();
 
@@ -51,13 +46,13 @@ function VehicleDetail() {
   const WHATSAPP_NUMBER = "5493572674920";
 
   useEffect(() => {
-    if (dealershipLoading || !dealershipId || !id) return;
+    if (dealershipLoading || !dealershipId || !slug) return;
 
     const init = async () => {
       setLoading(true);
       console.log("🚗 VehicleDetail → chequeando cache/version...");
 
-      // 1️⃣ leer versión global de vehículos
+      // 1️⃣ leer versión global
       const { data } = await supabase
         .from("dealership_versions")
         .select("vehicles_version")
@@ -65,8 +60,8 @@ function VehicleDetail() {
         .maybeSingle();
 
       const dbVersion = data?.vehicles_version || null;
-      const localVersion = getLocalVersion(dealershipId, id);
-      const cached = loadCache(dealershipId, id);
+      const localVersion = getLocalVersion(dealershipId, slug);
+      const cached = loadCache(dealershipId, slug);
 
       // 2️⃣ cache válido
       if (cached && localVersion === dbVersion) {
@@ -78,19 +73,17 @@ function VehicleDetail() {
 
       console.log("🌐 Cache inválido → fetch vehículo");
 
-      // 3️⃣ fetch optimizado (NO select *)
+      // 3️⃣ fetch por slug
       const { data: vehicleData, error } = await supabase
         .from("products")
-        .select(
-          `
-          id, name, price, discount, stock, description,
+        .select(`
+          id, slug, name, price, discount, stock, description,
           image_urls, thumbnail_url,
           modelo, ano, version, kilometros, combustible, motor,
           potencia, puertas, transmision, color, condicion,
           carroceria, traccion, consumo_mixto, vin
-        `
-        )
-        .eq("id", id)
+        `)
+        .eq("slug", slug)
         .eq("dealership_id", dealershipId)
         .single();
 
@@ -101,18 +94,15 @@ function VehicleDetail() {
         return;
       }
 
-      const kb = new Blob([JSON.stringify(vehicleData)]).size / 1024;
-      console.log(`📦 VehicleDetail payload: ${kb.toFixed(2)} KB`);
-
-      saveCache(dealershipId, id, vehicleData);
-      setLocalVersion(dealershipId, id, dbVersion);
+      saveCache(dealershipId, slug, vehicleData);
+      setLocalVersion(dealershipId, slug, dbVersion);
 
       setVehicle(vehicleData);
       setLoading(false);
     };
 
     init();
-  }, [id, dealershipId, dealershipLoading]);
+  }, [slug, dealershipId, dealershipLoading]);
 
   // ===============================
   // IMÁGENES OPTIMIZADAS
@@ -200,8 +190,84 @@ Estoy interesado en el vehículo:
     </div>
   );
 
+  // ===============================
+  // SEO DATA
+  // ===============================
+  const dealershipName = import.meta.env.VITE_DEALERSHIP_NAME || "Concesionario";
+
+  const pageTitle = `${vehicle.name} ${vehicle.ano ? vehicle.ano : ""} en venta | ${dealershipName}`;
+
+  const pageDescription = vehicle.description
+    ? vehicle.description.slice(0, 155).replace(/\s+\S*$/, "")
+    : `${vehicle.name} disponible en ${dealershipName}. Consultá precio, financiación y más detalles.`;
+
+  const currentUrl = window.location.href;
+
+  const mainImage = images[0];
+
+  const vehicleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Vehicle",
+    name: vehicle.name,
+    description: pageDescription,
+    image: mainImage,
+    brand: {
+      "@type": "Brand",
+      name: vehicle.modelo || dealershipName,
+    },
+    ...(vehicle.ano && { vehicleModelDate: vehicle.ano }),
+    ...(vehicle.kilometros && {
+      mileageFromOdometer: {
+        "@type": "QuantitativeValue",
+        value: vehicle.kilometros,
+        unitCode: "KMT",
+      },
+    }),
+    ...(vehicle.combustible && { fuelType: vehicle.combustible }),
+    ...(vehicle.transmision && { vehicleTransmission: vehicle.transmision }),
+    ...(vehicle.color && { color: vehicle.color }),
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "ARS",
+      price: finalPrice,
+      availability:
+        vehicle.stock > 0
+          ? "https://schema.org/InStock"
+          : "https://schema.org/OutOfStock",
+      url: currentUrl,
+    },
+  };
+
+
+
   return (
     <>
+    <Helmet>
+      <title>{pageTitle}</title>
+      <meta name="description" content={pageDescription} />
+
+      {/* Canonical */}
+      <link rel="canonical" href={currentUrl} />
+
+      {/* Open Graph */}
+      <meta property="og:type" content="product" />
+      <meta property="og:title" content={pageTitle} />
+      <meta property="og:description" content={pageDescription} />
+      <meta property="og:image" content={mainImage} />
+      <meta property="og:url" content={currentUrl} />
+
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={pageTitle} />
+      <meta name="twitter:description" content={pageDescription} />
+      <meta name="twitter:image" content={mainImage} />
+
+      {/* Schema.org */}
+      <script type="application/ld+json">
+        {JSON.stringify(vehicleSchema)}
+      </script>
+    </Helmet>
+
       <div className="vd-page">
         <div className="vd-container">
           {/* GALERÍA */}

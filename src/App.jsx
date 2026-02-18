@@ -180,7 +180,7 @@ function App() {
           {/* Rutas accesibles para todos */}
           <Route path="/" element={<Home />} />
           <Route path="/vehiculos" element={<Vehiculos />} />
-          <Route path="/vehiculo/:id" element={<VehicleDetail />} />
+          <Route path="/vehiculos/:slug" element={<VehicleDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/auth/callback" element={<AuthCallback />} />
           <Route path="/choose-dealership" element={<ChooseDealership />} />

@@ -70,14 +70,14 @@ function Home() {
     ]  = await Promise.all([
       supabase
         .from("products")
-        .select("id, name, price, thumbnail_url, destacado, ano, kilometros")
+        .select("id, slug, name, price, thumbnail_url, destacado, ano, kilometros")
         .eq("dealership_id", dealershipId)
         .eq("destacado", true)
         .limit(8),
 
       supabase
         .from("products")
-        .select("id, name, price, thumbnail_url, discount, ano, kilometros")
+        .select("id, slug, name, price, thumbnail_url, discount, ano, kilometros")
         .eq("dealership_id", dealershipId)
         .gt("discount", 0)
         .limit(12),
@@ -120,28 +120,27 @@ function Home() {
     <div className="home-page">
       {/* HERO */}
       <section className="home-hero">
-  <Carousel onHasBanners={setHasBanners} />
+        <Carousel onHasBanners={setHasBanners} />
 
-  <div className="hero-overlay" />
+        <div className="hero-overlay" />
 
-  <div className="home-hero-content">
-    <h1 className="home-hero-title">Bienvenido a Dromux Automotores</h1>
-    <p className="home-hero-subtitle">
-      Tu confianza, nuestro compromiso. Encuentra el vehículo perfecto con
-      la mejor atención y precios imbatibles.
-    </p>
+        <div className="home-hero-content">
+          <h1 className="home-hero-title">Bienvenido a Dromux Automotores</h1>
+          <p className="home-hero-subtitle">
+            Tu confianza, nuestro compromiso. Encuentra el vehículo perfecto con
+            la mejor atención y precios imbatibles.
+          </p>
 
-    <div className="home-hero-cta">
-      <Link to="/vehiculos" className="home-cta-btn primary">
-        Explorar vehículos
-      </Link>
-      <Link to="/contacto" className="home-cta-btn secondary">
-        Contactanos ahora
-      </Link>
-    </div>
-  </div>
-</section>
-
+          <div className="home-hero-cta">
+            <Link to="/vehiculos" className="home-cta-btn primary">
+              Explorar vehículos
+            </Link>
+            <Link to="/contacto" className="home-cta-btn secondary">
+              Contactanos ahora
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* DESTACADOS */}
       <section className="home-featured">
@@ -171,14 +170,14 @@ function Home() {
             <div className="auto-scroll-track">
               {[...destacados, ...destacados].map((p, i) => (
                 <Link
-                  to={`/vehiculo/${p.id}`}
+                  to={`/vehiculos/${p.slug}`}
                   key={`${p.id}-${i}`}
                   className="home-card"
                 >
                   <div className="home-card-img">
                     <img
                       src={p.thumbnail_url || "/placeholder-car.webp"}
-                      alt={p.name}
+                      alt={`${p.name} en venta`}
                       loading="lazy"
                     />
                     {p.destacado && (

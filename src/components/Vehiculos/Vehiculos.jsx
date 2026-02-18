@@ -87,7 +87,7 @@ function Vehiculos() {
         supabase
           .from("products")
           .select(
-            "id, name, price, discount, stock, category, subcategory, thumbnail_url, ano, kilometros"
+            "id, slug, name, price, discount, stock, category, subcategory, thumbnail_url, ano, kilometros"
           )
           .eq("dealership_id", dealershipId),
 
@@ -232,7 +232,7 @@ function Vehiculos() {
 
                 return (
                   <div key={vehicle.id} className="veh-card">
-                    <Link to={`/vehiculo/${vehicle.id}`} className="veh-link">
+                    <Link to={`/vehiculos/${vehicle.slug}`} className="veh-link">
                       <div className="veh-image-container">
                         <img
                           src={vehicle.thumbnail_url || "/placeholder.webp"}
@@ -272,8 +272,8 @@ function Vehiculos() {
                         </div>
                       </div>
                     </Link>
-                    <Link
-                      to={`/vehiculo/${vehicle.id}`}
+                    <Link 
+                      to={`/vehiculos/${vehicle.slug}`}
                       className="veh-add-btn"
                     >
                       Más información

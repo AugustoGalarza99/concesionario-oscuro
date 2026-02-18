@@ -65,6 +65,18 @@ const MAX_PRODUCTS = 20;
 
   const createThumbnail = (file) => resizeImage(file, 800, 0.8);
 
+  const generateSlug = (text) => {
+  return text
+    .toString()
+    .normalize("NFD") // quita acentos
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9\s-]/g, "") // quita símbolos
+    .replace(/\s+/g, "-") // espacios a guiones
+    .replace(/-+/g, "-"); // evita dobles guiones
+};
+
 
 /* =========================
    Component
@@ -437,6 +449,32 @@ useEffect(() => {
       return;
     }
 
+    const ensureUniqueSlug = async (baseSlug, productId = null) => {
+      let slug = baseSlug;
+      let counter = 1;
+
+      while (true) {
+        let query = supabase
+          .from("products")
+          .select("id")
+          .eq("dealership_id", dealershipId)
+          .eq("slug", slug);
+
+        if (productId) {
+          query = query.neq("id", productId);
+        }
+
+        const { data } = await query.maybeSingle();
+
+        if (!data) break;
+
+        slug = `${baseSlug}-${counter}`;
+        counter++;
+      }
+
+      return slug;
+    };
+
     // 🚫 LIMITE DE PRODUCTOS (solo al crear)
     if (!initialData) {
       const { count, error } = await supabase
@@ -478,11 +516,18 @@ useEffect(() => {
         await deleteImagesFromStorage(imagesToDelete);
       }
 
+      const baseSlug = generateSlug(form.name);
+        const finalSlug = await ensureUniqueSlug(
+          baseSlug,
+          initialData?.id || null
+        );
+
       // 2️⃣ payload limpio
       const thumbnailUrl = newThumbnail || finalImageUrls[0] || null;
 
       const payload = clean({
         name: form.name.trim(),
+        slug: finalSlug,
         plate: selectedVehicle?.plate || null,
         description: form.description || null,
 
