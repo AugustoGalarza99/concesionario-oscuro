@@ -12,9 +12,6 @@ import Perfil from "./components/Perfil/Perfil";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import AdminBanner from "./components/AdminBanner/AdminBanner";
 import GestorCategorias from "./components/GestorCategorias/GestorCategorias";
-import CheckoutSuccess from "./components/MercadoPago/CheckoutSuccess/CheckoutSuccess";
-import CheckoutFailure from "./components/MercadoPago/CheckoutFailure/CheckoutFailure";
-import CheckoutPending from "./components/MercadoPago/CheckoutPending/CheckoutPending";
 import RegistroVentas from "./components/RegistroVentas/RegistroVentas";
 import ClientesAdmin from "./components/ClientesAdmin/ClientesAdmin";
 import Contacto from "./components/Contacto/Contacto";
@@ -187,10 +184,6 @@ function App() {
 
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/financiacion" element={<Financiacion />} />
-
-          <Route path="/success" element={<CheckoutSuccess />}/>
-          <Route path="/failure" element={<CheckoutFailure />} />
-          <Route path="/pending" element={<CheckoutPending />} />
         </Routes>
     </>
   );
