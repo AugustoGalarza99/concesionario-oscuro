@@ -599,10 +599,6 @@
   animation: scrollRight 40s linear infinite;
 }
 
-.auto-scroll-wrapper:hover .auto-scroll-track {
-  animation-play-state: paused;
-}
-
 /* Animación izquierda */
 @keyframes scrollLeft {
   0% {
