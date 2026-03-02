@@ -183,10 +183,9 @@
 }
 /* === DESTACADOS SCROLL HORIZONTAL === */
 .home-products-grid.horizontal {
-  display: flex;                 /* 🔥 flex en vez de grid */
+  display: block;                 /* 🔥 flex en vez de grid */
   gap: 3rem;
-  overflow-x: auto;              /* ✅ scroll horizontal */
-  overflow-y: hidden;
+  overflow: hidden;
   padding-bottom: 1.5rem;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
@@ -592,11 +591,11 @@
   display: flex;
   gap: 3rem;
   width: max-content;
-  animation: scrollLeft 40s linear infinite;
+  animation: scrollLeft 20s linear infinite;
 }
 
 .auto-scroll-track.reverse {
-  animation: scrollRight 40s linear infinite;
+  animation: scrollRight 30s linear infinite;
 }
 
 /* Animación izquierda */

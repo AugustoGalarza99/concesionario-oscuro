@@ -148,6 +148,7 @@ export default function AdminDashboard() {
     total_gastos,
     rentabilidad,
     patente,
+    gastos_detalle,
     vehiculo_nombre,
     vendedor_nombre,
     cliente_nombre,
@@ -658,7 +659,24 @@ const deleteExpense = (expense) => {
             <p><strong>Financiación:</strong> {selectedVenta.financiacion ? "Sí" : "No"}</p>
             <p><strong>Permuta:</strong> {selectedVenta.permuta ? "Sí" : "No"}</p>
             <p><strong>Notas:</strong> {typeof selectedVenta.notas === "string" ? selectedVenta.notas : "—"}</p>
+            {Array.isArray(selectedVenta.gastos_detalle) && 
+              selectedVenta.gastos_detalle.length > 0 && (
+                <>
+                  <hr />
+                  <p><strong>Detalle de gastos:</strong></p>
 
+                  <div className="gastos-detalle">
+                    {selectedVenta.gastos_detalle.map((g, i) => (
+                      <div key={i} className="gasto-item">
+                        <span>{g.description || "Sin descripción"}</span>
+                        <strong>
+                          ${Number(g.amount || 0).toLocaleString()}
+                        </strong>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
             <button onClick={() => setSelectedVenta(null)}>Cerrar</button>
           </div>
         </div>

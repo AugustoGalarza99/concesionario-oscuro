@@ -25,6 +25,7 @@ import Administracion from "./components/Administracion/Administracion";
 import VehiclesEntry from "./components/VehicleEntry/VehicleEntry";
 import Leads from "./components/Leads/Leads";
 import Instrucciones from "./components/Instrucciones/Instrucciones"
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 
 function App() {
@@ -78,6 +79,7 @@ function App() {
         className: "custom-toast",
       }}
     />
+    <ScrollToTop />
     <Navbar />
         
         <Routes>

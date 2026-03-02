@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
 import { Check, X, AlertTriangle } from "lucide-react";
 import { supabase } from "../../supabaseClient";
 import { toast } from "sonner";
@@ -45,6 +45,9 @@ function VehicleEntry() {
 
   const [search, setSearch] = useState("");
   const activeVehicle = vehicles.find(v => v.id === expensesVehicleId);
+
+  const formRef = useRef(null);
+  const expensesRef = useRef(null);
 
   /* =========================
      LOAD VEHICLES + SALES
@@ -306,7 +309,7 @@ function VehicleEntry() {
       )}
 
       {/* FORM */}
-      <form className="vehicle-form" onSubmit={handleSubmit}>
+      <form ref={formRef} className="vehicle-form" onSubmit={handleSubmit}>
         <input placeholder="Marca" value={form.brand} onChange={e => setForm({ ...form, brand: e.target.value })} />
         <input placeholder="Modelo" value={form.model} onChange={e => setForm({ ...form, model: e.target.value })} />
         <input placeholder="Año" type="number" value={form.year} onChange={e => setForm({ ...form, year: e.target.value })} />
@@ -403,16 +406,29 @@ function VehicleEntry() {
                           onClick={() => {
                             setEditingVehicle(v);
                             setForm({ ...EMPTY_FORM, ...v });
+
+                            setTimeout(() => {
+                              formRef.current?.scrollIntoView({
+                                behavior: "smooth",
+                                block: "start",
+                              });
+                            }, 100);
                           }}
                         >
                           Editar
                         </button>
-
                         <button
                           className="btn expenses"
                           onClick={() => {
                             setExpensesVehicleId(v.id);
                             loadExpenses(v.id);
+
+                            setTimeout(() => {
+                              expensesRef.current?.scrollIntoView({
+                                behavior: "smooth",
+                                block: "start",
+                              });
+                            }, 150);
                           }}
                         >
                           Gastos
@@ -444,7 +460,7 @@ function VehicleEntry() {
 
       {/* EXPENSES (igual que antes) */}
       {expensesVehicleId && (
-        <div className="expense-box">
+        <div ref={expensesRef} className="expense-box">
           <header className="expense-header">
             <h3>
               Gastos del vehículo – {activeVehicle?.plate} –{" "}
@@ -457,6 +473,13 @@ function VehicleEntry() {
                 setExpensesVehicleId(null);
                 setExpenses([]);
                 setExpense({ description: "", amount: "" });
+
+                setTimeout(() => {
+                  formRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+                }, 100);
               }}
             >
               ✕

@@ -212,10 +212,6 @@ function Login() {
           {mode === "login" && (
             <>
               <p>
-                ¿No tenés cuenta?{" "}
-                <span onClick={() => setMode("signup")}>Crear cuenta</span>
-              </p>
-              <p>
                 Olvidé mi contraseña{" "}
                 <span onClick={() => setMode("reset")}>Recuperar</span>
               </p>

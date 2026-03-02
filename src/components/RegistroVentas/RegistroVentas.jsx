@@ -81,6 +81,7 @@ const mapVenta = (v) => ({
   financiacion: v.financiacion,
   permuta: v.permuta,
   rentabilidad: v.rentabilidad,
+  gastosDetalle: v.gastos_detalle || [],
 });
 
 
@@ -172,7 +173,13 @@ const mapVenta = (v) => ({
         cliente_telefono,
         vehiculo_nombre,
         vendedor_nombre,
-        notas
+        notas,
+        metodo_pago,
+        financiacion,
+        permuta,
+        rentabilidad,
+        vendedor_id,
+        gastos_detalle
       `)
       .eq("dealership_id", dealershipId)
       .gte("fecha", inicioMes.toISOString())
@@ -208,7 +215,13 @@ const mapVenta = (v) => ({
         cliente_telefono,
         vehiculo_nombre,
         vendedor_nombre,
-        notas
+        notas,
+        metodo_pago,
+        financiacion,
+        permuta,
+        rentabilidad,
+        vendedor_id,
+        gastos_detalle
       `)
       .eq("dealership_id", dealershipId)
       .gte("fecha", new Date(desde).toISOString())
@@ -300,7 +313,7 @@ const mapVenta = (v) => ({
       // 🔹 Traer gastos del vehículo
       const { data: gastos, error: gastosError } = await supabase
         .from("vehicle_expenses")
-        .select("amount")
+        .select("amount, description")
         .eq("vehicle_id", vehiculo.id);
 
       if (gastosError) throw gastosError;
@@ -309,6 +322,10 @@ const mapVenta = (v) => ({
         (sum, g) => sum + Number(g.amount || 0),
         0
       );
+      const gastosDetalle = (gastos || []).map(g => ({
+        amount: Number(g.amount || 0),
+        description: g.description || ""
+      }));
 
       const precioVenta = Number(nuevaVenta.precioVenta);
       const precioIngreso = Number(vehiculo.purchase_price);
@@ -334,6 +351,7 @@ const mapVenta = (v) => ({
         metodo_pago: metodosSeleccionados,
         financiacion: nuevaVenta.financiacion,
         permuta: nuevaVenta.permuta,
+        gastos_detalle: gastosDetalle,
       };
 
       // 🔹 Insert venta
@@ -737,7 +755,7 @@ const mapVenta = (v) => ({
               </div>
 
               <div className="form-group">
-                <label>
+                <label className="checkbox-row">
                   <input
                     type="checkbox"
                     checked={nuevaVenta.financiacion}
@@ -748,7 +766,7 @@ const mapVenta = (v) => ({
                   Financiación
                 </label>
 
-                <label>
+                <label className="checkbox-row">
                   <input
                     type="checkbox"
                     checked={nuevaVenta.permuta}
@@ -883,16 +901,18 @@ const mapVenta = (v) => ({
                   <label key={m} className="checkbox-row">
                     <input
                       type="checkbox"
-                      checked={nuevaVenta.metodoPago[m]}
-                      onChange={(e) =>
-                        setNuevaVenta({
-                          ...nuevaVenta,
-                          metodoPago: {
-                            ...nuevaVenta.metodoPago,
-                            [m]: e.target.checked,
-                          },
-                        })
-                      }
+                      checked={editandoVenta.metodoPago?.includes(m)}
+                      onChange={(e) => {
+                        const actual = editandoVenta.metodoPago || [];
+                        const actualizado = e.target.checked
+                          ? [...actual, m]
+                          : actual.filter(x => x !== m);
+
+                        setEditandoVenta({
+                          ...editandoVenta,
+                          metodoPago: actualizado,
+                        });
+                      }}
                     />
                     {m.charAt(0).toUpperCase() + m.slice(1)}
                   </label>
@@ -900,23 +920,23 @@ const mapVenta = (v) => ({
               </div>
 
               <div className="form-group">
-                <label>
+                <label className="checkbox-row">
                   <input
                     type="checkbox"
-                    checked={nuevaVenta.financiacion}
+                    checked={editandoVenta.financiacion || false}
                     onChange={(e) =>
-                      setNuevaVenta({ ...nuevaVenta, financiacion: e.target.checked })
+                      setEditandoVenta({ ...editandoVenta, financiacion: e.target.checked })
                     }
                   />
                   Financiación
                 </label>
 
-                <label>
+                <label className="checkbox-row">
                   <input
                     type="checkbox"
-                    checked={nuevaVenta.permuta}
+                    checked={editandoVenta.permuta || false}
                     onChange={(e) =>
-                      setNuevaVenta({ ...nuevaVenta, permuta: e.target.checked })
+                      setEditandoVenta({ ...editandoVenta, financiacion: e.target.checked })
                     }
                   />
                   Permuta
