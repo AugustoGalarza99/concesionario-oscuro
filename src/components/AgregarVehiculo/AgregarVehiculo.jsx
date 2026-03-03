@@ -892,7 +892,7 @@ useEffect(() => {
                 </select>
               </div>
 
-              <div className="ap-form-group">
+              {/*<div className="ap-form-group">
                 <label>Consumo mixto</label>
                 <input
                   name="consumo_mix"
@@ -902,7 +902,7 @@ useEffect(() => {
                   placeholder="Ej: 14.5 km/l"
                   disabled={uploading}
                 />
-              </div>
+              </div>*/}
               
               {/* Precio y descuento */}
               <div className="ap-form-group">
@@ -914,13 +914,13 @@ useEffect(() => {
                 {errors.price && <div className="ap-field-error">{errors.price}</div>}
               </div>
 
-              <div className="ap-form-group">
+              {/*<div className="ap-form-group">
                 <label>Precio contado / transferencia</label>
                 <div className="ap-price-input-wrapper">
                   <span className="ap-currency">$</span>
                   <input name="cashPrice" type="number" min="0" step="0.01" value={form.cashPrice} onChange={handleField} disabled={uploading} />
                 </div>
-              </div>
+              </div>*/}
 
               {/*<div className="ap-form-group">
                 <label>Descuento (%)</label>
