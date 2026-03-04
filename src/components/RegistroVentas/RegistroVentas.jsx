@@ -26,10 +26,6 @@ const saveVentasCache = (key, data) => {
   sessionStorage.setItem(key, JSON.stringify(data));
 };
 
-const clearVentasMesCache = (dealershipId, date = new Date()) => {
-  sessionStorage.removeItem(getVentasMesKey(dealershipId, date));
-};
-
 
 export default function RegistroVentas() {
   const { dealershipId, loading: dealershipLoading } = useDealership();
@@ -73,6 +69,8 @@ const mapVenta = (v) => ({
   fecha: v.fecha,
   precioVenta: v.precio_venta,
   clienteNombre: v.cliente_nombre,
+  precioIngreso: v.precio_ingreso, 
+  totalGastos: v.total_gastos,
   clienteTelefono: v.cliente_telefono,
   vehiculoNombre: v.vehiculo_nombre,
   vendedorNombre: v.vendedor_nombre,
@@ -151,10 +149,10 @@ const mapVenta = (v) => ({
     const cacheKey = getVentasMesKey(dealershipId);
     const cached = loadVentasCache(cacheKey);
 
-    if (cached) {
+    if (cached && ventas.length === 0) {
       console.log("📦 Ventas mes desde cache");
       setVentas(cached);
-      return; // 🔥 CLAVE: cortar acá
+      return;
     }
 
     console.log("🌐 Ventas mes desde DB");
@@ -177,6 +175,8 @@ const mapVenta = (v) => ({
         metodo_pago,
         financiacion,
         permuta,
+        precio_ingreso,   
+        total_gastos,
         rentabilidad,
         vendedor_id,
         gastos_detalle
@@ -217,6 +217,8 @@ const mapVenta = (v) => ({
         vendedor_nombre,
         notas,
         metodo_pago,
+        precio_ingreso,   
+        total_gastos,
         financiacion,
         permuta,
         rentabilidad,
@@ -369,7 +371,14 @@ const mapVenta = (v) => ({
         .update({ sold: true })
         .eq("id", vehiculo.id);
 
-      setVentas(prev => [mapVenta(ventaCreada), ...prev]);
+      setVentas(prev => {
+        const updated = [mapVenta(ventaCreada), ...prev];
+
+        const cacheKey = getVentasMesKey(dealershipId);
+        saveVentasCache(cacheKey, updated);
+
+        return updated;
+      });
       setVehiculos(prev => prev.filter(v => v.id !== vehiculo.id));
 
       setNuevaVenta({
@@ -386,8 +395,6 @@ const mapVenta = (v) => ({
       console.error(err);
       toast.error("Error al registrar la venta");
     }
-    clearVentasMesCache(dealershipId);
-    await cargarVentasMesActual();
   };
 
   useEffect(() => {
@@ -415,14 +422,21 @@ const mapVenta = (v) => ({
     try {
       const vendedor = vendedores.find(u => u.id === editandoVenta.vendedorId);
 
+      const nuevoPrecio = Number(editandoVenta.precioVenta);
+      const precioIngreso = Number(editandoVenta.precioIngreso || 0);
+      const totalGastos = Number(editandoVenta.totalGastos || 0);
+
+      const nuevaRentabilidad = nuevoPrecio - precioIngreso - totalGastos;
+
       const updatedData = {
-        precio_venta: Number(editandoVenta.precioVenta),
+        precio_venta: nuevoPrecio,
+        rentabilidad: nuevaRentabilidad,   // 👈 CLAVE
         cliente_nombre: editandoVenta.clienteNombre.trim(),
         cliente_telefono: editandoVenta.clienteTelefono.trim(),
         notas: editandoVenta.notas.trim(),
         vendedor_id: editandoVenta.vendedorId,
         vendedor_nombre: vendedor
-          ? vendedor.displayName || vendedor.email
+          ? vendedor.name
           : editandoVenta.vendedorNombre,
         updated_at: new Date(),
       };
@@ -433,9 +447,28 @@ const mapVenta = (v) => ({
         .eq("id", editandoVenta.id)
         .eq("dealership_id", dealershipId);
 
-      setVentas(prev =>
-        prev.map(v => v.id === editandoVenta.id ? { ...v, ...updatedData } : v)
-      );
+      setVentas(prev => {
+        const updatedVentas = prev.map(v =>
+          v.id === editandoVenta.id
+            ? {
+                ...v,
+                precioVenta: nuevoPrecio,
+                rentabilidad: nuevaRentabilidad,
+                clienteNombre: editandoVenta.clienteNombre.trim(),
+                clienteTelefono: editandoVenta.clienteTelefono.trim(),
+                notas: editandoVenta.notas.trim(),
+                vendedorNombre: vendedor
+                  ? vendedor.name
+                  : editandoVenta.vendedorNombre,
+              }
+            : v
+        );
+
+        const cacheKey = getVentasMesKey(dealershipId);
+        saveVentasCache(cacheKey, updatedVentas);
+
+        return updatedVentas;
+      });
 
       setEditandoVenta(null);
       setFormError("");
@@ -467,8 +500,14 @@ const mapVenta = (v) => ({
         return;
       }
 
-      setVentas(prev => prev.filter(v => v.id !== ventaAEliminar));
-      clearVentasMesCache(dealershipId);
+      setVentas(prev => {
+        const updated = prev.filter(v => v.id !== ventaAEliminar);
+
+        const cacheKey = getVentasMesKey(dealershipId);
+        saveVentasCache(cacheKey, updated);
+
+        return updated;
+      });
 
       toast.success("Venta eliminada correctamente");
     } catch (err) {
@@ -666,19 +705,18 @@ const mapVenta = (v) => ({
               <div className="form-group">
                 <label>Vehículo vendido *</label>
                 <select
-  value={nuevaVenta.vehiculoId}
-  onChange={(e) =>
-    setNuevaVenta({ ...nuevaVenta, vehiculoId: e.target.value })
-  }
->
-  <option value="">Seleccionar vehículo</option>
-  {vehiculos.map((v) => (
-    <option key={v.id} value={v.id}>
-      {v.plate} – {v.brand} {v.model}
-    </option>
-  ))}
-</select>
-
+                  value={nuevaVenta.vehiculoId}
+                  onChange={(e) =>
+                    setNuevaVenta({ ...nuevaVenta, vehiculoId: e.target.value })
+                  }
+                >
+                  <option value="">Seleccionar vehículo</option>
+                  {vehiculos.map((v) => (
+                    <option key={v.id} value={v.id}>
+                      {v.plate} – {v.brand} {v.model}
+                    </option>
+                  ))}
+                </select>
               </div>
 
               <div className="form-group">
@@ -936,7 +974,7 @@ const mapVenta = (v) => ({
                     type="checkbox"
                     checked={editandoVenta.permuta || false}
                     onChange={(e) =>
-                      setEditandoVenta({ ...editandoVenta, financiacion: e.target.checked })
+                      setEditandoVenta({ ...editandoVenta, permuta: e.target.checked })
                     }
                   />
                   Permuta
