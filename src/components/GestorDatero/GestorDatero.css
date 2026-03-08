@@ -1,0 +1,398 @@
+/* GestorDatero.css - Premium 2026 Compact Luxe Edition */
+/* Basado en tu versión anterior + elegancia y estilo concesionario alta gama */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.dateroContainer {
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px 20px;
+  font-family: 'Quicksand', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+/* Tabs compactos y premium */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.tabs button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: #475569;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.tabs button:hover {
+  background: #f1f5f9;
+}
+
+.tabs button.active {
+  background: #c2410c;
+  color: white;
+  box-shadow: 0 3px 10px rgba(194, 65, 12, 0.25);
+}
+
+/* Builder y Form panel - compacto pero elegante */
+.builderPanel,
+.formPanel {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+}
+
+/* Header config - grid compacto */
+.headerConfig {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.headerConfig label {
+  font-size: 12.5px;
+  color: #64748b;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.headerConfig input {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.headerConfig input:focus {
+  border-color: #c2410c;
+  box-shadow: 0 0 0 3px rgba(194, 65, 12, 0.15);
+  outline: none;
+}
+
+.headerConfig input[type="color"] {
+  height: 38px;
+  padding: 3px;
+  border-radius: 8px;
+}
+
+/* Secciones builder - compactas y premium */
+.sectionBuilder {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 20px;
+  background: #ffffff;
+  transition: all 0.25s;
+}
+
+.sectionBuilder:hover {
+  border-color: #c2410c40;
+  box-shadow: 0 8px 24px rgba(194, 65, 12, 0.1);
+}
+
+.sectionHeader {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.sectionTitle {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.sectionHeader input[type="color"] {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.deleteSection {
+  cursor: pointer;
+  color: #ef4444;
+  transition: all 0.2s;
+}
+
+.deleteSection:hover {
+  color: #dc2626;
+  transform: scale(1.15);
+}
+
+/* Campos builder - grid más compacto y elegante */
+.fieldBuilder {
+  display: grid;
+  grid-template-columns: 2fr 1fr 110px 36px;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 8px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.fieldBuilder input,
+.fieldBuilder select {
+  padding: 8px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 13.5px;
+}
+
+.fieldBuilder input:focus,
+.fieldBuilder select:focus {
+  border-color: #c2410c;
+  box-shadow: 0 0 0 3px rgba(194, 65, 12, 0.12);
+  outline: none;
+}
+
+.fieldBuilder label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  color: #475569;
+  white-space: nowrap;
+}
+
+/* Botones premium compactos */
+.addFieldBtn {
+  margin-top: 12px;
+  background: #e8f0ff;
+  border: none;
+  padding: 9px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: #3b82f6;
+  transition: all 0.25s;
+}
+
+.addFieldBtn:hover {
+  background: #dbe7ff;
+  transform: translateY(-1px);
+}
+
+.addSectionBtn {
+  margin-top: 16px;
+  background: linear-gradient(135deg, #001f3f, #0074d9);
+  color: white;
+  border: none;
+  padding: 11px 18px;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(194, 65, 12, 0.25);
+  transition: all 0.3s;
+}
+
+.addSectionBtn:hover {
+  background: linear-gradient(135deg, #001f3f, #0074d9);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(194, 65, 12, 0.35);
+}
+
+.saveBtnD {
+  margin-top: 24px;
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 700;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(16, 185, 129, 0.25);
+  transition: all 0.3s;
+}
+
+.saveBtnD:hover {
+  background: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.35);
+}
+
+/* Form panel - compacto y limpio */
+.formPanel {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.sectionForm {
+  margin-bottom: 24px;
+}
+
+.sectionForm h2 {
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  letter-spacing: -0.3px;
+}
+
+.fieldForm {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+  align-items: center;
+}
+
+.fieldForm label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.fieldForm input {
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.fieldForm input:focus {
+  border-color: #c2410c;
+  box-shadow: 0 0 0 3px rgba(194, 65, 12, 0.15);
+  outline: none;
+}
+
+/* Botón PDF premium */
+.pdfButton {
+  margin-top: 28px;
+  background: #0f172a;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.25);
+  transition: all 0.3s;
+}
+
+.pdfButton:hover {
+  background: #1e293b;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.35);
+}
+
+/* Config PDF - compacta */
+.pdfConfigPanel {
+  margin: 24px 0;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+
+.pdfConfigTitle {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #0f172a;
+}
+
+.pdfConfigGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+}
+
+.pdfConfigItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.pdfConfigItem label {
+  font-size: 12.5px;
+  color: #64748b;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.pdfConfigItem input {
+  padding: 9px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.pdfConfigHint {
+  font-size: 11.5px;
+  color: #94a3b8;
+  margin-top: 5px;
+  font-style: italic;
+}
+
+/* Responsive - manteniendo compacto */
+@media (max-width: 768px) {
+  .dateroContainer {
+    padding: 20px 16px;
+  }
+
+  .tabs {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .fieldBuilder {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .fieldForm {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

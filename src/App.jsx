@@ -26,6 +26,9 @@ import VehiclesEntry from "./components/VehicleEntry/VehicleEntry";
 import Leads from "./components/Leads/Leads";
 import Instrucciones from "./components/Instrucciones/Instrucciones"
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import GestorDatero from "./components/GestorDatero/GestorDatero";
+import GestorRecibos from "./components/GestorRecibos/GestorRecibos";
+import Preventa from "./components/PreVentaForm/PreVentaForm";
 
 
 function App() {
@@ -174,6 +177,30 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/admin/datero"
+            element={
+              <ProtectedRoute allowedRoles={["admin", "vendedor"]}>
+                <GestorDatero />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/recibo"
+            element={
+              <ProtectedRoute allowedRoles={["admin", "vendedor"]}>
+                <GestorRecibos />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/preventa"
+            element={
+              <ProtectedRoute allowedRoles={["admin", "vendedor"]}>
+                <Preventa />
+              </ProtectedRoute>
+            }
+          />
           
 
           {/* Rutas accesibles para todos */}
@@ -183,7 +210,6 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/auth/callback" element={<AuthCallback />} />
           <Route path="/choose-dealership" element={<ChooseDealership />} />
-
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/financiacion" element={<Financiacion />} />
         </Routes>

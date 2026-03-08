@@ -1,0 +1,289 @@
+/* Estructura Global */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #0f172a;
+  font-family: 'Quicksand', sans-serif;
+}
+.premium-navbar {
+  height: 70px;
+  background: linear-gradient(135deg, #f8f9ff 0%, #e8ecff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  border-bottom: 1px solid #334155;
+  color: rgb(0, 0, 0);
+}
+
+.download-cta {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.download-cta:hover { background: #dc2626; transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(239, 68, 68, 0.4); }
+
+.main-content { display: flex; flex: 1; overflow: hidden; }
+
+/* Panel de Edición */
+.editor-panel {
+  width: 380px;
+  background: #1e293b;
+  padding: 25px;
+  overflow-y: auto;
+  color: #f1f5f9;
+}
+
+.editor-group {
+  background: rgba(240, 239, 255, 0.6);
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border: 2px dashed rgba(108, 92, 231, 0.3);
+}
+
+.editor-group h3 { font-size: 13px; margin-bottom: 12px; color: #000000; text-transform: uppercase; letter-spacing: 1px; }
+
+.editor-group input, .editor-group select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 8px;
+  background: #0f172a;
+  border: 1px solid #475569;
+  border-radius: 6px;
+  color: white;
+  box-sizing: border-box;
+}
+
+.row { display: flex; gap: 8px; }
+
+.input-with-label { display: flex; flex-direction: column; margin-bottom: 10px; }
+.input-with-label label { font-size: 11px; margin-bottom: 4px; color: #000000; }
+
+/* Vista Previa PDF */
+.preview-area {
+  flex: 1;
+  background: linear-gradient(135deg, #f8f9ff 0%, #e8ecff 100%);
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+  overflow-y: auto;
+}
+
+.pdf-sheet {
+  width: 210mm;
+  min-height: 297mm;
+  background: white;
+  padding: 20mm;
+  color: #1e293b;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.pdf-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 5px solid #000000;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+}
+
+.logo-box img { height: 60px; }
+.concesionario-name { font-size: 14px; font-weight: 800; color: #334155; }
+.title-box { text-align: right; }
+.title-box h1 { font-size: 24px; font-weight: 900; text-transform: uppercase; margin: 0; font-style: italic; color: #0f172a; }
+
+.section-header { background: #f1f5f9; color: #475569; padding: 6px 15px; font-weight: 800; font-size: 12px; border-radius: 4px; margin: 25px 0 15px; }
+
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; font-size: 12.5px; }
+.info-col p { margin: 6px 0; border-bottom: 1px solid #f1f5f9; padding-bottom: 4px; }
+.info-col span { font-weight: bold; color: #64748b; margin-right: 10px; font-size: 11px; }
+
+/* Tarjeta de Vehículo Premium */
+.vehicle-premium-card { border: 2px solid #0f172a; border-radius: 8px; margin-top: 25px; overflow: hidden; }
+.v-header { background: #0f172a; color: white; padding: 10px; font-weight: 900; text-align: center; text-transform: uppercase; letter-spacing: 2px; }
+.v-content { display: flex; padding: 20px; gap: 20px; }
+.v-image { width: 45%; height: 160px; border-radius: 6px; overflow: hidden; background: #f8fafc; display: flex; align-items: center; justify-content: center; }
+.v-image img { width: 100%; object-fit: contain; }
+.v-details { width: 55%; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.v-spec { display: flex; flex-direction: column; border-bottom: 1px solid #f1f5f9; }
+.v-spec span { font-size: 9px; color: #94a3b8; font-weight: bold; text-transform: uppercase; }
+.v-spec strong { font-size: 12px; }
+.v-spec-full { grid-column: span 2; border-top: 1px dashed #e2e8f0; padding-top: 5px; }
+
+/* Tabla de Precios */
+.price-table { width: 100%; border-collapse: collapse; margin-top: 30px; font-size: 14px; }
+.price-table td { padding: 12px; border-bottom: 1px solid #f1f5f9; }
+.amount { text-align: right; font-weight: bold; font-family: 'Courier New', monospace; }
+.discount { color: #ef4444; }
+.subtotal { background: #f8fafc; font-weight: 900; }
+.finance { color: #3b82f6; }
+.total-final { background: #0f172a; color: white; font-size: 18px; }
+
+.finance-footer { display: flex; gap: 15px; margin-top: 30px; }
+.f-item { flex: 1; border: 2px solid #e2e8f0; padding: 15px; text-align: center; border-radius: 8px; }
+.f-item span { font-size: 10px; color: #64748b; font-weight: bold; display: block; margin-bottom: 5px; }
+.f-item strong { font-size: 16px; color: #0f172a; }
+
+.sign-area { display: flex; justify-content: space-around; margin-top: 60px; }
+.sign-block { width: 220px; text-align: center; font-size: 12px; }
+.s-line { border-top: 2px solid #0f172a; margin-bottom: 8px; }
+
+/* ... (mantenemos lo anterior pero ajustamos lo siguiente) ... */
+
+.grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+/* Compactación de la hoja PDF */
+.pdf-sheet {
+  width: 210mm;
+  height: 297mm; /* Fijamos la altura para asegurar que todo entre */
+  padding: 12mm; /* Reducimos padding global */
+  position: relative;
+}
+
+.pdf-header { margin-bottom: 15px; padding-bottom: 10px; }
+
+.section-header { margin: 12px 0 8px; padding: 4px 10px; }
+
+.info-grid.compact p { margin: 2px 0; font-size: 11.5px; }
+
+.vehicle-premium-card.compact { margin-top: 10px; }
+.v-image-small { width: 35%; height: 100px; display: flex; align-items: center; }
+.v-image-small img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.v-details-grid { width: 65%; display: grid; grid-template-columns: 1fr 1fr; font-size: 10px; gap: 5px; }
+
+.compact-table td { padding: 6px 12px !important; font-size: 12.5px !important; }
+
+.finance-footer-compact { display: flex; gap: 10px; margin-top: 10px; }
+.finance-footer-compact .f-item { padding: 8px; border: 1px solid #ddd; flex: 1; text-align: center; }
+.finance-footer-compact strong { font-size: 14px; }
+
+/* Firmas fijas al fondo */
+.sign-area-fixed {
+  position: absolute;
+  bottom: 25mm;
+  left: 12mm;
+  right: 12mm;
+  display: flex;
+  justify-content: space-around;
+}
+
+.sign-block { width: 200px; text-align: center; }
+.s-line { border-top: 1px solid #000; margin-bottom: 5px; }
+.sign-block p { font-size: 11px; font-weight: bold; margin: 0; }
+
+.editor-panel {
+  width: 380px;
+  background: linear-gradient(135deg, #f8f9ff 0%, #e8ecff 100%);
+  padding: 25px;
+  overflow-y: auto;
+  color: #f1f5f9;
+}
+
+.editor-group input,
+.editor-group select {
+
+  width: 100%;
+  padding: 11px;
+  margin-bottom: 8px;
+
+  background: rgba(240, 239, 255, 0.6);
+
+  border: 1px solid #475569;
+  border-radius: 8px;
+
+  color: rgb(0, 0, 0);
+
+  font-size: 13px;
+}
+
+.editor-group input:focus,
+.editor-group select:focus {
+
+  outline: none;
+  border: 1px solid #ef4444;
+
+  box-shadow: 0 0 0 1px #ef444455;
+
+}
+
+.grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.custom-file {
+
+  background: #020617;
+  border: 1px dashed #475569;
+  padding: 10px;
+
+}
+
+.custom-file:hover {
+
+  border-color: #ef4444;
+
+}
+
+.vehicle-premium-card {
+
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+
+}
+
+.v-header {
+
+  background: linear-gradient(90deg,#020617,#0f172a);
+  color: white;
+  font-size: 16px;
+  letter-spacing: 2px;
+
+}
+
+.v-details {
+
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 8px;
+
+}
+
+.v-spec {
+
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 4px;
+
+}
+
+.v-spec span {
+
+  font-size: 9px;
+  text-transform: uppercase;
+  color: #64748b;
+
+}
+
+.v-spec strong {
+
+  font-size: 12px;
+
+}
+
+.v-spec-full {
+
+  grid-column: span 2;
+
+}
+
