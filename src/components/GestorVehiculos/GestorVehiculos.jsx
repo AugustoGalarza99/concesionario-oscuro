@@ -46,7 +46,7 @@ import "./GestorVehiculos.css";
 /* ---------------- COMPONENT ---------------- */
 export default function GestorVehiculos() {
   const navigate = useNavigate();
-  const { dealershipId, loading: dealershipLoading } = useDealership();
+  const { dealershipId, dealership, loading: dealershipLoading } = useDealership();
   const [vehicles, setVehicles] = useState([]);
   const [categories, setCategories] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -314,7 +314,7 @@ const loadVehicleForEdit = async (vehicleId) => {
 
 const closeConfirm = () => setConfirm(null);
 
-  const MAX_PRODUCTS = 20;
+  const MAX_PRODUCTS = dealership?.max_vehicles ?? 20;
   const totalVehicles = totalCount;
   const isLimitReached = totalVehicles >= MAX_PRODUCTS;
 

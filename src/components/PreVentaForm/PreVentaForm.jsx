@@ -19,7 +19,6 @@ export default function Preventa() {
     profesion: "",
     iva: "",
     domicilio: "",
-    estadoCivil: "",
     modelo: "",
     puertas: "5",
     cilindrada: "",
@@ -84,7 +83,7 @@ export default function Preventa() {
   }
 
   return (
-    <div className="app-wrapper">
+    <div id="preventa" className="app-wrapper">
       <nav className="premium-navbar">
         <span className="badge">PREVENTA V2.6 - OPTIMIZADO</span>
         <button className="download-cta" onClick={descargarPDF}>GENERAR PDF</button>
@@ -103,8 +102,7 @@ export default function Preventa() {
             <h3>👤 Cliente</h3>
             <input type="text" placeholder="Nombre Completo" value={data.cliente} onChange={e => update("cliente", e.target.value)} />
             <div className="row">
-                <input type="text" placeholder="IVA" value={data.iva} onChange={e => update("iva", e.target.value)} />
-                <input type="text" placeholder="Estado Civil" value={data.estadoCivil} onChange={e => update("estadoCivil", e.target.value)} />
+                <input type="text" placeholder="Condicion IVA" value={data.iva} onChange={e => update("iva", e.target.value)} />
             </div>
             <input type="text" placeholder="Teléfono" value={data.telefono} onChange={e => update("telefono", e.target.value)} />
             <input type="email" placeholder="Email" value={data.emailCliente} onChange={e => update("emailCliente", e.target.value)} />
@@ -200,10 +198,10 @@ export default function Preventa() {
             <h3>💰 Costos y Finanzas</h3>
             <div className="grid-2col">
                 <div className="input-with-label"><label>Precio</label><input type="number" value={data.precio} onChange={e => update("precio", e.target.value)} /></div>
-                <div className="input-with-label"><label>Bonif.</label><input type="number" value={data.bonificacion} onChange={e => update("bonificacion", e.target.value)} /></div>
-                <div className="input-with-label"><label>Capital</label><input type="number" value={data.capital} onChange={e => update("capital", e.target.value)} /></div>
+                <div className="input-with-label"><label>Bonif. / Toma de usado</label><input type="number" value={data.bonificacion} onChange={e => update("bonificacion", e.target.value)} /></div>
+                <div className="input-with-label"><label>Capital a financiar</label><input type="number" value={data.capital} onChange={e => update("capital", e.target.value)} /></div>
                 <div className="input-with-label"><label>Formularios</label><input type="number" value={data.formularios} onChange={e => update("formularios", e.target.value)} /></div>
-                <div className="input-with-label"><label>Financiac.</label><input type="number" value={data.gastoFinanciacion} onChange={e => update("gastoFinanciacion", e.target.value)} /></div>
+                <div className="input-with-label"><label>Gasto de Financiaciacion</label><input type="number" value={data.gastoFinanciacion} onChange={e => update("gastoFinanciacion", e.target.value)} /></div>
                 <div className="input-with-label"><label>Gastos Ent.</label><input type="number" value={data.gastosEntrega} onChange={e => update("gastosEntrega", e.target.value)} /></div>
             </div>
             <div className="row">
@@ -236,7 +234,7 @@ export default function Preventa() {
                   <p><span>Email:</span> {data.emailCliente}</p>
                 </div>
                 <div className="info-col">
-                  <p><span>IVA:</span> {data.iva}</p>
+                  <p><span>Condicion IVA:</span> {data.iva}</p>
                   <p><span>DNI / CUIL:</span> {data.cuil}</p>
                   <p><span>Teléfono:</span> {data.telefono}</p>
                 </div>
@@ -292,7 +290,7 @@ export default function Preventa() {
               <table className="price-table compact-table">
                 <tbody>
                   <tr><td>Precio de Lista</td><td className="amount">{money(data.precio)}</td></tr>
-                  <tr className="discount"><td>Bonificación</td><td className="amount">-{money(data.bonificacion)}</td></tr>
+                  <tr className="discount"><td>Bonificación / Toma de usado</td><td className="amount">-{money(data.bonificacion)}</td></tr>
                   <tr className="subtotal"><td>Subtotal Unidad</td><td className="amount">{money(subtotal)}</td></tr>
                   <tr className="finance"><td>Capital a Financiar</td><td className="amount">-{money(data.capital)}</td></tr>
                   <tr><td>Formularios y Gastos Financiación</td><td className="amount">{money(Number(data.formularios) + Number(data.gastoFinanciacion))}</td></tr>

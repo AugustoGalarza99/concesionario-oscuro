@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";
+import { useDealership } from "./hooks/useDealership";
 import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
 import GestorProductos from "./components/GestorVehiculos/GestorVehiculos";
 import Home from "./components/Home/Home";
@@ -29,12 +30,16 @@ import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import GestorDatero from "./components/GestorDatero/GestorDatero";
 import GestorRecibos from "./components/GestorRecibos/GestorRecibos";
 import Preventa from "./components/PreVentaForm/PreVentaForm";
+import GestorFinanciaciones from "./components/GestorFinanciaciones/GestorFinanciaciones";
+import ModuleGate from "./components/ModuleGate/ModuleGate";
+import DealershipGuard from "./components/DealershipGuard/DealershipGuard";
 
 
 function App() {
   const { authLoading } = useAuth();
   const [minTimePassed, setMinTimePassed] = useState(false);
   const [hideLoader, setHideLoader] = useState(false);
+  const { dealership } = useDealership();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -84,7 +89,7 @@ function App() {
     />
     <ScrollToTop />
     <Navbar />
-        
+        <DealershipGuard>
         <Routes>
           
           {/* Rutas protegidas solo para ADMIN */}
@@ -181,7 +186,9 @@ function App() {
             path="/admin/datero"
             element={
               <ProtectedRoute allowedRoles={["admin", "vendedor"]}>
-                <GestorDatero />
+                <ModuleGate module="datero">
+                  <GestorDatero />
+                </ModuleGate>
               </ProtectedRoute>
             }
           />
@@ -189,7 +196,9 @@ function App() {
             path="/admin/recibo"
             element={
               <ProtectedRoute allowedRoles={["admin", "vendedor"]}>
-                <GestorRecibos />
+                <ModuleGate module="recibos">
+                  <GestorRecibos />
+                </ModuleGate>
               </ProtectedRoute>
             }
           />
@@ -197,7 +206,19 @@ function App() {
             path="/admin/preventa"
             element={
               <ProtectedRoute allowedRoles={["admin", "vendedor"]}>
-                <Preventa />
+                <ModuleGate module="preventa">
+                  <Preventa />
+                </ModuleGate>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/financiacion"
+            element={
+              <ProtectedRoute allowedRoles={["admin", "vendedor"]}>
+                <ModuleGate module="financiacion">
+                  <GestorFinanciaciones />
+                </ModuleGate>
               </ProtectedRoute>
             }
           />
@@ -213,6 +234,7 @@ function App() {
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/financiacion" element={<Financiacion />} />
         </Routes>
+        </DealershipGuard>
     </>
   );
 }

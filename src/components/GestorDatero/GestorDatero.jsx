@@ -363,15 +363,15 @@ const generatePDF = async () => {
   };
 
   return (
-    <div className="dateroContainer">
-      <div className="tabs">
+    <div className="dat-dateroContainer">
+      <div className="dat-tabs">
         <button onClick={() => setActiveTab("builder")}>Creador</button>
         <button onClick={() => setActiveTab("form")}>Formulario</button>
       </div>
 
       {activeTab === "builder" && (
-        <div className="builderPanel">
-          <div className="headerConfig">
+        <div className="dat-builderPanel">
+          <div className="dat-headerConfig">
             <div>
               <label>Texto encabezado</label>
               <input
@@ -406,65 +406,65 @@ const generatePDF = async () => {
             </div>
           </div>
 
-          <div className="pdfConfigPanel">
+          <div className="dat-pdfConfigPanel">
 
-          <div className="pdfConfigTitle">
-            Configuración del PDF
+            <div className="dat-pdfConfigTitle">
+              Configuración del PDF
+            </div>
+
+            <div className="dat-pdfConfigGrid">
+
+              <div className="dat-pdfConfigItem">
+                <label>Tamaño fuente</label>
+                <input
+                  type="number"
+                  min="7"
+                  max="14"
+                  value={fontSize}
+                  onChange={(e)=>setFontSize(Number(e.target.value))}
+                />
+                <span className="dat-pdfConfigHint">
+                  Tamaño del texto en el PDF
+                </span>
+              </div>
+
+              <div className="dat-pdfConfigItem">
+                <label>Alto de celda</label>
+                <input
+                  type="number"
+                  min="1"
+                  max="6"
+                  value={cellPadding}
+                  onChange={(e)=>setCellPadding(Number(e.target.value))}
+                />
+                <span className="dat-pdfConfigHint">
+                  Espacio interno de cada fila
+                </span>
+              </div>
+
+              <div className="dat-pdfConfigItem">
+                <label>Espacio entre secciones</label>
+                <input
+                  type="number"
+                  min="4"
+                  max="20"
+                  value={sectionSpacing}
+                  onChange={(e)=>setSectionSpacing(Number(e.target.value))}
+                />
+                <span className="dat-pdfConfigHint">
+                  Separación entre bloques
+                </span>
+              </div>
+
+            </div>
+
           </div>
-
-          <div className="pdfConfigGrid">
-
-            <div className="pdfConfigItem">
-              <label>Tamaño fuente</label>
-              <input
-                type="number"
-                min="7"
-                max="14"
-                value={fontSize}
-                onChange={(e)=>setFontSize(Number(e.target.value))}
-              />
-              <span className="pdfConfigHint">
-                Tamaño del texto en el PDF
-              </span>
-            </div>
-
-            <div className="pdfConfigItem">
-              <label>Alto de celda</label>
-              <input
-                type="number"
-                min="1"
-                max="6"
-                value={cellPadding}
-                onChange={(e)=>setCellPadding(Number(e.target.value))}
-              />
-              <span className="pdfConfigHint">
-                Espacio interno de cada fila
-              </span>
-            </div>
-
-            <div className="pdfConfigItem">
-              <label>Espacio entre secciones</label>
-              <input
-                type="number"
-                min="4"
-                max="20"
-                value={sectionSpacing}
-                onChange={(e)=>setSectionSpacing(Number(e.target.value))}
-              />
-              <span className="pdfConfigHint">
-                Separación entre bloques
-              </span>
-            </div>
-
-          </div>
-
-        </div>
 
           {schema.sections.map((section, sIndex) => (
-            <div className="sectionBuilder" key={sIndex}>
-              <div className="sectionHeader">
+            <div className="dat-sectionBuilder" key={sIndex}>
+              <div className="dat-sectionHeader">
                 <input
-                  className="sectionTitle"
+                  className="dat-sectionTitle"
                   value={section.title}
                   onChange={(e) =>
                     updateSection(sIndex, "title", e.target.value)
@@ -481,23 +481,16 @@ const generatePDF = async () => {
 
                 <Trash2
                   size={18}
-                  className="deleteSection"
+                  className="dat-deleteSection"
                   onClick={() => removeSection(sIndex)}
                 />
-                <ArrowUp
-                size={16}
-                onClick={() => moveSection(sIndex,-1)}
-                />
 
-                <ArrowDown
-                size={16}
-                onClick={() => moveSection(sIndex,1)}
-                />
+                <ArrowUp size={16} onClick={() => moveSection(sIndex,-1)} />
+                <ArrowDown size={16} onClick={() => moveSection(sIndex,1)} />
               </div>
-              
 
               {section.fields.map((field, fIndex) => (
-                <div className="fieldBuilder" key={fIndex}>
+                <div className="dat-fieldBuilder" key={fIndex}>
                   <input
                     value={field.label}
                     onChange={(e) =>
@@ -540,7 +533,7 @@ const generatePDF = async () => {
               ))}
 
               <button
-                className="addFieldBtn"
+                className="dat-addFieldBtn"
                 onClick={() => addField(sIndex)}
               >
                 <Plus size={16} /> Campo
@@ -548,24 +541,24 @@ const generatePDF = async () => {
             </div>
           ))}
 
-          <button className="addSectionBtn" onClick={addSection}>
+          <button className="dat-addSectionBtn" onClick={addSection}>
             <Plus /> Nueva sección
           </button>
 
-          <button className="saveBtnD" onClick={saveSchema}>
+          <button className="dat-saveBtnD" onClick={saveSchema}>
             <Save /> Guardar
           </button>
         </div>
       )}
 
       {activeTab === "form" && (
-        <div className="formPanel">
+        <div className="dat-formPanel">
           {schema.sections.map((section, i) => (
-            <div key={i} className="sectionForm">
+            <div key={i} className="dat-sectionForm">
               <h2 style={{ color: section.color }}>{section.title}</h2>
 
               {section.fields.map((field, f) => (
-                <div key={f} className="fieldForm">
+                <div key={f} className="dat-fieldForm">
                   <label>
                     {field.label}
                     {field.required && "*"}
@@ -582,7 +575,7 @@ const generatePDF = async () => {
             </div>
           ))}
 
-          <button className="pdfButton" onClick={generatePDF}>
+          <button className="dat-pdfButton" onClick={generatePDF}>
             <FileText /> Generar PDF
           </button>
         </div>

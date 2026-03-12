@@ -8,8 +8,6 @@ import { useDealership } from "../../hooks/useDealership";
 import { useAuth } from "../../context/AuthContext";
 import "./AgregarVehiculo.css";
 
-const MAX_PRODUCTS = 20;
-
 
   // =========================
   // IMAGE OPTIMIZATION HELPERS
@@ -484,11 +482,6 @@ useEffect(() => {
 
       if (error) {
         toast.error("No se pudo validar el límite de productos");
-        return;
-      }
-
-      if (count >= MAX_PRODUCTS) {
-        toast.error(`Límite alcanzado (${MAX_PRODUCTS} vehículos máximo)`);
         return;
       }
     }

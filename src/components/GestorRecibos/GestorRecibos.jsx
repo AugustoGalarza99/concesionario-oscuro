@@ -356,7 +356,7 @@ pdf.save(`recibo_${numero}.pdf`);
 
 return(
 
-<div className="reciboContainer">
+<div id="recibo-module" className="reciboContainer">
 
 <div className="tabs">
 

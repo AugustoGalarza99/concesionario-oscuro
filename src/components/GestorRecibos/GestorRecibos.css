@@ -1,223 +1,452 @@
-/* GestorRecibos.css - Premium 2026 Light Luxe Edition */
-/* Clean admin + glassmorphism sutil + concesionario alta gama */
+/* ==============================
+RESET LOCAL
+============================== */
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+#recibo-module *{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-.reciboContainer {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  font-family: 'Quicksand', 'Helvetica Neue', Arial, sans-serif;
-  background: #f8fafc;
-  min-height: 100vh;
-  color: #0f172a;
+/* ==============================
+CONTAINER
+============================== */
+
+#recibo-module.reciboContainer{
+
+max-width:1100px;
+
+margin:auto;
+
+padding:32px 20px;
+
+font-family:
+"Inter",
+"Plus Jakarta Sans",
+system-ui,
+sans-serif;
+
+color:#0f172a;
+
+background:
+radial-gradient(circle at 20% 10%, rgba(59,130,246,.08), transparent 40%),
+radial-gradient(circle at 90% 90%, rgba(14,165,233,.06), transparent 40%),
+#f8fafc;
+
+min-height:100vh;
+
 }
 
-/* Tabs premium */
-.tabs {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 40px;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  padding: 8px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+/* ==============================
+TABS
+============================== */
+
+#recibo-module .tabs{
+
+display:flex;
+
+gap:8px;
+
+margin-bottom:26px;
+
+padding:6px;
+
+border-radius:14px;
+
+background:rgba(255,255,255,.7);
+
+backdrop-filter:blur(10px);
+
+border:1px solid #e5e7eb;
+
+box-shadow:
+0 4px 12px rgba(0,0,0,.05);
+
 }
 
-.tabs button {
-  flex: 1;
-  padding: 14px 24px;
-  border: none;
-  background: transparent;
-  color: #475569;
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+#recibo-module .tabs button{
+
+flex:1;
+
+padding:10px 18px;
+
+border-radius:10px;
+
+border:none;
+
+background:transparent;
+
+font-weight:600;
+
+font-size:14px;
+
+color:#64748b;
+
+cursor:pointer;
+
+transition:.25s;
+
 }
 
-.tabs button.active,
-.tabs button:hover {
-  background: #c2410c;
-  color: white;
-  box-shadow: 0 6px 16px rgba(194, 65, 12, 0.25);
-  transform: translateY(-1px);
+#recibo-module .tabs button:hover{
+
+background:rgba(0,0,0,.05);
+
 }
 
-/* Paneles principales */
-.builderPanel,
-.formPanel {
-  background: white;
-  border-radius: 20px;
-  padding: 40px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e2e8f0;
-  backdrop-filter: blur(4px);
-  transition: all 0.35s ease;
+#recibo-module .tabs button.active{
+
+background:white;
+
+color:#0f172a;
+
+box-shadow:
+0 4px 10px rgba(0,0,0,.08);
+
 }
 
-.builderPanel:hover,
-.formPanel:hover {
-  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.1);
+/* ==============================
+PANELS
+============================== */
+
+#recibo-module .builderPanel,
+#recibo-module .formPanel{
+
+background:rgba(255,255,255,.85);
+
+backdrop-filter:blur(12px);
+
+border-radius:16px;
+
+padding:28px;
+
+border:1px solid #e5e7eb;
+
+box-shadow:
+0 10px 30px rgba(0,0,0,.06),
+0 2px 10px rgba(0,0,0,.04);
+
 }
 
-/* Títulos */
-h2 {
-  font-size: 28px;
-  font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 32px;
-  letter-spacing: -0.5px;
+/* ==============================
+TITLES
+============================== */
+
+#recibo-module .builderPanel h2{
+
+font-size:20px;
+
+font-weight:700;
+
+margin-bottom:20px;
+
+letter-spacing:-0.3px;
+
 }
 
-/* Labels y campos */
-label {
-  display: block;
-  margin: 24px 0 8px;
-  font-size: 13px;
-  font-weight: 700;
-  color: #475569;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
+/* ==============================
+LABELS
+============================== */
+
+#recibo-module label{
+
+display:block;
+
+font-size:13px;
+
+font-weight:600;
+
+color:#475569;
+
+margin-top:14px;
+
+margin-bottom:6px;
+
 }
 
-input,
-textarea {
-  width: 100%;
-  padding: 14px 16px;
-  border: 1px solid #cbd5e1;
-  border-radius: 12px;
-  font-size: 15px;
-  background: #ffffff;
-  color: #0f172a;
-  transition: all 0.25s ease;
-  font-family: 'Quicksand', sans-serif;
+/* ==============================
+INPUTS
+============================== */
+
+#recibo-module input,
+#recibo-module textarea{
+
+width:100%;
+
+padding:10px 12px;
+
+border-radius:10px;
+
+border:1px solid #e2e8f0;
+
+background:white;
+
+font-size:14px;
+
+transition:.2s;
+
 }
 
-input:focus,
-textarea:focus {
-  outline: none;
-  border-color: #c2410c;
-  box-shadow: 0 0 0 4px rgba(194, 65, 12, 0.15);
+#recibo-module textarea{
+
+min-height:100px;
+
+resize:vertical;
+
 }
 
-textarea {
-  min-height: 140px;
-  resize: vertical;
+#recibo-module input:hover,
+#recibo-module textarea:hover{
+
+border-color:#cbd5e1;
+
 }
 
-/* Hint */
-.hint {
-  font-size: 13px;
-  color: #64748b;
-  margin-top: 8px;
-  font-style: italic;
-  opacity: 0.9;
+#recibo-module input:focus,
+#recibo-module textarea:focus{
+
+outline:none;
+
+border-color:#2563eb;
+
+box-shadow:
+0 0 0 3px rgba(37,99,235,.15);
+
 }
 
-/* Campos extra */
-.extraField {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 12px;
+/* ==============================
+HINT
+============================== */
+
+#recibo-module .hint{
+
+font-size:12px;
+
+color:#94a3b8;
+
+margin-top:6px;
+
+font-style:italic;
+
 }
 
-.extraField input {
-  flex: 1;
+/* ==============================
+EXTRA FIELD ROW
+============================== */
+
+#recibo-module .extraField{
+
+display:flex;
+
+gap:10px;
+
+align-items:center;
+
+margin-top:10px;
+
+padding:8px;
+
+border-radius:10px;
+
+background:#f9fafb;
+
+border:1px solid #e5e7eb;
+
+transition:.2s;
+
 }
 
-.extraField button {
-  background: #ef4444;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  padding: 10px;
-  cursor: pointer;
-  transition: all 0.25s;
+#recibo-module .extraField:hover{
+
+background:#f3f4f6;
+
 }
 
-.extraField button:hover {
-  background: #dc2626;
-  transform: scale(1.08);
+#recibo-module .extraField input{
+
+flex:1;
+
 }
 
-/* Botones premium */
-.addField,
-.saveBtn,
-.pdfButton {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 20px;
-  padding: 14px 28px;
-  border: none;
-  border-radius: 50px;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+/* ==============================
+ADD FIELD BUTTON
+============================== */
+
+#recibo-module .addField{
+
+margin-top:12px;
+
+border:none;
+
+padding:10px 14px;
+
+border-radius:10px;
+
+background:#eef2ff;
+
+color:#4f46e5;
+
+font-weight:600;
+
+display:flex;
+
+align-items:center;
+
+gap:6px;
+
+cursor:pointer;
+
+transition:.25s;
+
 }
 
-.addField {
-  background: #10b981;
-  color: white;
-  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.25);
+#recibo-module .addField:hover{
+
+background:#e0e7ff;
+
+transform:translateY(-1px);
+
 }
 
-.addField:hover {
-  background: #059669;
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(16, 185, 129, 0.35);
+/* ==============================
+SAVE BUTTON
+============================== */
+
+#recibo-module .saveBtn{
+
+margin-top:24px;
+
+padding:13px 26px;
+
+border-radius:40px;
+
+border:none;
+
+background:linear-gradient(135deg,#10b981,#059669);
+
+color:white;
+
+font-weight:700;
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+cursor:pointer;
+
+transition:.25s;
+
+box-shadow:
+0 6px 18px rgba(16,185,129,.25);
+
 }
 
-.saveBtn {
-  background: #c2410c;
-  color: white;
-  box-shadow: 0 6px 20px rgba(194, 65, 12, 0.25);
+#recibo-module .saveBtn:hover{
+
+transform:translateY(-2px);
+
+box-shadow:
+0 12px 28px rgba(16,185,129,.35);
+
 }
 
-.saveBtn:hover {
-  background: #ea580c;
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(194, 65, 12, 0.4);
+/* ==============================
+FORM PANEL
+============================== */
+
+#recibo-module .formPanel{
+
+display:flex;
+
+flex-direction:column;
+
+gap:14px;
+
 }
 
-.pdfButton {
-  background: #0f172a;
-  color: white;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.2);
-  font-size: 16px;
-  padding: 16px 36px;
+/* ==============================
+PDF BUTTON
+============================== */
+
+#recibo-module .pdfButton{
+
+margin-top:26px;
+
+padding:15px 28px;
+
+border-radius:40px;
+
+background:linear-gradient(135deg,#0f172a,#1e293b);
+
+color:white;
+
+font-weight:700;
+
+border:none;
+
+cursor:pointer;
+
+display:flex;
+
+gap:10px;
+
+align-items:center;
+
+justify-content:center;
+
+transition:.25s;
+
+box-shadow:
+0 8px 24px rgba(0,0,0,.25);
+
 }
 
-.pdfButton:hover {
-  background: #1e293b;
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.3);
+#recibo-module .pdfButton:hover{
+
+transform:translateY(-2px);
+
+box-shadow:
+0 14px 40px rgba(0,0,0,.35);
+
 }
 
-/* Responsivo básico */
-@media (max-width: 768px) {
-  .reciboContainer {
-    padding: 24px 16px;
-  }
+/* ==============================
+RESPONSIVE
+============================== */
 
-  .tabs {
-    flex-direction: column;
-    padding: 6px;
-  }
+@media (max-width:900px){
 
-  .builderPanel,
-  .formPanel {
-    padding: 28px 20px;
-  }
+#recibo-module.reciboContainer{
+
+padding:22px 16px;
+
+}
+
+#recibo-module .tabs{
+
+flex-direction:column;
+
+}
+
+#recibo-module .extraField{
+
+flex-direction:column;
+
+align-items:stretch;
+
+}
+
+}
+
+@media (max-width:600px){
+
+#recibo-module .builderPanel,
+#recibo-module .formPanel{
+
+padding:20px;
+
+}
+
 }
